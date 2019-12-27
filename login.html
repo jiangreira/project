@@ -286,7 +286,7 @@
 
 	<!--signup -->
 	<section class="section-signup">
-		<div class="container">
+		<div class="container bg-dark">
 			<div class="signupform">
 				<h4>新會員註冊</h4>
 				<form>
@@ -299,13 +299,15 @@
 						<!-- password -->
 						<div class="form-group col-md-6">
 							<label for="signuppass">Password</label>
-							<input type="password" class="form-control" id="signuppass" placeholder="至少8位的英文數字密碼" required>
+							<input type="password" class="form-control" id="signuppass" placeholder="至少8位的英文數字密碼"
+								required>
 						</div>
 					</div>
 					<!-- email -->
 					<div class="form-group">
 						<label for="signupemail">E-mail</label>
-						<input type="email" class="form-control" id="signupemail" placeholder="ex: picker@picker.com.tw" required>
+						<input type="email" class="form-control" id="signupemail" placeholder="ex: picker@picker.com.tw"
+							required>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-2">
@@ -314,46 +316,44 @@
 						</div>
 						<div class="form-group col-md-3">
 							<label for="signupphone">Phone</label>
-							<input type="text" class="form-control" id="signupphone" placeholder="0912345678" required >
+							<input type="text" class="form-control" id="signupphone" placeholder="0912345678" required>
 						</div>
 						<div class="form-group col-md-7">
 							<label for="signupaddr">Address</label>
 							<input type="text" class="form-control" id="signupaddr">
 						</div>
-						
-						
+
+
 					</div>
-					<button type="submit" class=" float-right btn btn-lg btn-primary">註冊</button>
+					<button type="submit" class="btn btn-primary">註冊</button>
 				</form>
 			</div>
 		</div>
 	</section>
-
-	<!-- login -->
+	<!-- signin -->
 	<section class="section-log">
-		<div class="container">
-			<div class="log">
-				<form class="logform bg-info">
-					<h4>會員登入</h4>
-					<div class="iptdiv">
-						<input class="iptstyle" type="text" name="name" placeholder="UserName">
+		<div class="container bg-dark">
+			<div class="signinform d-flex flex-column ">
+				<h4 class="text-center">會員登入</h4>
+				<form class="formlog">
+					<div class="row flex-column justify-content-center" >
+						<!-- user id -->
+						<div class="form-group col-md-5">
+							<input type="text" class="form-control " id="signinid" placeholder="使用者帳號" required>
+						</div>
+						<!-- password -->
+						<div class="form-group col-md-5">
+							<input type="password" class="form-control" id="signinpass" placeholder="使用者密碼" required>
+						</div>
 					</div>
-					<div class="iptdiv">
-						<input class="iptstyle" type="password" name="pass" placeholder="PassWord">
-					</div>
-					<div class="iptbtndiv">
-						<!-- Button -->
-						<button>登入</button>
-					</div>
+					<button type="submit" class="btn btn-primary">登入</button>
 				</form>
-				<hr>
 				<div class="pas-new">
 					<span><a href="#">忘記密碼</a></span>
 					<span>|</span>
 					<span><a href="#">註冊</a></span>
 				</div>
 			</div>
-			<hr>
 		</div>
 	</section>
 
