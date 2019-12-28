@@ -5,7 +5,13 @@
  */
 
 @media (max-width: 575px) {
-  
+  /* title page */
+  .title-area h2{
+    font-size: 35px;
+  }
+  .content-cata{
+    padding-right: 0px;
+  }
 }
 
 @media (min-width: 576px) {
@@ -15,18 +21,18 @@
 }
 @media (max-width: 768px) {
   /* log */
-  .pas-new{
+  .pas-new {
     margin-left: 0px !important;
     margin-right: 0px !important;
   }
-  .iptstyle{
-    font-size: 1rem  !important;
+  .iptstyle {
+    font-size: 1rem !important;
   }
-  .iptbtndiv{
+  .iptbtndiv {
     width: 130px !important;
   }
   /* idxslider */
-  .item-title{
+  .item-title {
     font-size: 2.5rem !important;
   }
   /* idxbanner */
@@ -49,6 +55,7 @@
 @media (min-width: 992px) {
 }
 @media (max-width: 992px) {
+  /* footer */
   .fo-caco {
     width: 33.3% !important;
   }
@@ -58,84 +65,81 @@
 
 /*------------------------------------------*/
 /* other */
-.cht{
-  font-family: 'Noto Sans TC', sans-serif;
+.cht {
+  font-family: "Noto Sans TC", sans-serif;
 }
 
-.iptdiv{
-	height: 50px;
+.iptdiv {
+  height: 50px;
   border: 1px solid #e6e6e6;
   border-radius: 2px;
   overflow: hidden;
   margin-bottom: 20px;
-  border: 2px solid #333333 ;
+  border: 2px solid #333333;
 }
-.iptstyle{
+.iptstyle {
   width: 100%;
   height: 100%;
-  font-family: 'Noto Sans TC', sans-serif;
-	font-size: 1.2rem;
-	color: #555555;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 1.2rem;
+  color: #555555;
   line-height: 1.8;
-  padding:0px 22px;
-  border: 2px solid #333333 ;
+  padding: 0px 22px;
+  border: 2px solid #333333;
 }
 
 /* login */
-.section-log{
-  padding:30px 0px;
+.section-log {
+  margin: 30px 0px;
 }
-.signinform{
+.signinform {
   background: rosybrown;
   padding: 5% 5%;
   position: relative;
 }
-.signinform>form{
+.signinform > form {
   position: relative;
 }
-.signinform>form>button{
+.signinform > form > button {
   position: absolute;
   right: 0px;
 }
-.pas-new{
+.pas-new {
   text-align: left;
   height: 35px;
   margin-left: 10px;
-  
 }
-.pas-new span{
+.pas-new span {
   line-height: 35px;
 }
-.pas-new a{
+.pas-new a {
   font: 1rem;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
 }
-.formlog .row{
-  margin:0 !important;
+.formlog .row {
+  margin: 0 !important;
 }
 
 /* sign up */
-.signupform{
+.signupform {
   padding: 5% 5%;
   position: relative;
 }
-.signupform h4{
-  margin-bottom:15px ;
+.signupform h4 {
+  margin-bottom: 15px;
 }
-.signupform>form{
+.signupform > form {
   position: relative;
 }
-.signupform>form>button{
+.signupform > form > button {
   position: absolute;
   right: 0px;
 }
 
-
-
 /* cart */
-.cart-btn{
+.cart-btn {
   display: flex;
-	justify-content: center;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 40px;
@@ -143,66 +147,66 @@
   border-radius: 20px;
   transition: all 0.4s;
 }
-.
-.cart-btn:hover{
+
+.cart-btn:hover {
   background-color: #e65540;
   color: white;
   font-family: Montserrat-Regular;
-	font-size: 1rem;
-	color: white;
-	text-transform: uppercase;
+  font-size: 1rem;
+  color: white;
+  text-transform: uppercase;
 }
 
 /* 輪播圖 */
-.idxslider{
+.idxslider {
   position: relative;
 }
-.item-desc{
+.item-desc {
   width: 100%;
   height: 100%;
   display: flex;
-	flex-direction: column;
-	align-items: center;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 150px 15px;
 }
-.small-desc{
+.small-desc {
   font-family: Montserrat-Regular;
-	font-size: 1.5rem;
-	color: white;
-	line-height: 1.5;
+  font-size: 1.5rem;
+  color: white;
+  line-height: 1.5;
   letter-spacing: 2px;
   text-align: center;
-  margin-bottom: 15px
+  margin-bottom: 15px;
 }
-.item-title{
+.item-title {
   font-family: Poppins-Bold;
-	font-size: 60px;
-	color: white;
-	line-height: 1.2;
-	letter-spacing: 3px;
+  font-size: 60px;
+  color: white;
+  line-height: 1.2;
+  letter-spacing: 3px;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 37px;
 }
-.item-btn{
+.item-btn {
   width: 160px;
 }
-.item-btn a{
-	display: -ms-flexbox;
-	display: flex;
-	justify-content: center;
+.item-btn a {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 46px;
   border-radius: 23px;
   font-family: Montserrat-Regular;
-	font-size: 1rem;
-	color: #111111;
+  font-size: 1rem;
+  color: #111111;
   text-transform: uppercase;
   background: white;
 }
-.item-btn a:hover{
+.item-btn a:hover {
   background-color: #e65540;
   color: white;
   transition: all 0.4s;
@@ -243,69 +247,69 @@
   bottom: 20px;
   box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.1);
 }
-.col-btn a{
+.col-btn a {
   width: 100%;
   height: 46px;
   font-family: Montserrat-Regular;
-	font-size: 1rem;
+  font-size: 1rem;
   color: #333333;
-  background-color: rgba(255,255,255,0.95);
-	text-transform: uppercase;
-	display: flex;
-	justify-content: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
   align-items: center;
   transition: all 0.4s;
 }
-.col-btn a:hover{
+.col-btn a:hover {
   background-color: #e65540;
   color: white;
 }
 /* 方框special content */
-.col-saletxt{
+.col-saletxt {
   width: 100%;
   height: 100%;
   position: absolute;
-	left: 0px;
+  left: 0px;
   top: 0px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.col-saletxt h4{
+.col-saletxt h4 {
   font-family: Montserrat-Medium;
-	font-size: 30px;
+  font-size: 30px;
   color: #111111;
   text-align: center;
-	line-height: 1.2;
+  line-height: 1.2;
   text-transform: uppercase;
   max-width: 295px;
   padding-bottom: 8px;
 }
-.col-saletxt p{
+.col-saletxt p {
   max-width: 260px;
   text-align: center;
 }
 
-.col-saletxt > .saletxt-btn{
+.col-saletxt > .saletxt-btn {
   width: 180px;
-  padding-top:25px
+  padding-top: 25px;
 }
-.col-saletxt > .saletxt-btn a{
-	display: flex;
-	justify-content: center;
+.col-saletxt > .saletxt-btn a {
+  display: flex;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 46px;
   border-radius: 23px;
   background-color: #111111;
   font-family: Montserrat-Regular;
-	font-size: 16px;
-	color: white;
-	text-transform: uppercase;
+  font-size: 16px;
+  color: white;
+  text-transform: uppercase;
   transition: all 0.4s;
 }
-.col-saletxt>.saletxt-btn a:hover{
+.col-saletxt > .saletxt-btn a:hover {
   background-color: #e65540;
   color: white;
 }
@@ -522,4 +526,117 @@
   color: #888888;
   line-height: 1.8;
   padding: 15px 0;
+}
+
+
+/* 商品頁 */
+/* Prod title page */
+.title-area {
+  width: 100%;
+  min-height: 239px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size: cover;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  display: flex;
+	flex-direction: column;
+	align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.title-area h2{
+  font-family: Montserrat-Bold;
+	font-size: 50px;
+	color: white;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+.title-area p{
+  font-family: Montserrat-Regular;
+	font-size: 18px;
+	color: white;
+	line-height: 1.8;
+}
+/* 商品清單列內容 */
+.prod-content-page{
+  background: white;
+  padding-top:55px;
+  padding-bottom: 65px;
+}
+.prod-content-left{
+  padding-bottom: 30px;
+}
+.content-cata{
+  padding-right: 20px;
+}
+.content-cata h4{
+  font-family: Montserrat-Black;
+	font-size: 18px;
+	color: #333333;
+  line-height: 1.5;
+  padding-bottom: 7px;
+}
+.content-cata ul{
+  padding-bottom: 30px;
+}
+.content-cata ul li{
+  padding-bottom: 4px;
+}
+.content-cata ul li a{
+  font-family: Montserrat-Regular;
+	font-size: 15px;
+	color: #888888;
+  line-height: 1.8;
+  text-decoration: none;
+    
+}
+.content-cata ul li a:hover{
+  color: #e65540;
+}
+
+.cata-active{
+  color:red !important;
+}
+.search-product{
+  position: relative;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  overflow: hidden;
+margin-bottom: 54px;
+}
+.iptsearch{
+  font-family: Montserrat-Regular;
+	font-size: 13px;
+	color: #555555;
+  line-height: 1.8;
+  width: 100%;
+  height: 58px;
+  padding-left: 23px;
+  padding-right: 50px;
+}
+.searchbar{
+  position: absolute;
+	right: 0px;
+	top: 50%;
+  transform: translateY(-50%);
+	display: flex;
+	justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 58px;
+  color: #333333;
+  transition: all 0.4s;
+}
+.searchbar:hover{
+  color: #e65540;
+}
+.showresult{
+  padding:15px 0px;
+  font-family: Montserrat-Regular;
+	font-size: 13px;
+	color: #888888;
+	line-height: 1.8;
 }

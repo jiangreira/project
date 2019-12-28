@@ -32,6 +32,11 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="css/style.css">
+	<style>
+	html,body{
+		height:100%;
+	}
+	</style>
 
 	<!--===============================================================================================-->
 </head>
@@ -330,12 +335,14 @@
 			</div>
 		</div>
 	</section>
+
+
 	<!-- signin -->
-	<section class="section-log">
-		<div class="container bg-dark">
-			<div class="signinform d-flex flex-column ">
-				<h4 class="text-center">會員登入</h4>
-				<form class="formlog">
+	<section class="section-log ">
+		<div class="container bg-dark h-100">
+			<div class="signinform d-flex flex-column justify-content-center align-content-center ">
+				<h4 class="bg-warning ">會員登入</h4>
+				<form class="formlog bg-info">
 					<div class="row flex-column justify-content-center" >
 						<!-- user id -->
 						<div class="form-group col-md-5">
@@ -348,7 +355,7 @@
 					</div>
 					<button type="submit" class="btn btn-primary">登入</button>
 				</form>
-				<div class="pas-new">
+				<div class="bg-primary">
 					<span><a href="#">忘記密碼</a></span>
 					<span>|</span>
 					<span><a href="#">註冊</a></span>
