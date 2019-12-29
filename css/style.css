@@ -6,10 +6,10 @@
 
 @media (max-width: 575px) {
   /* title page */
-  .title-area h2{
+  .title-area h2 {
     font-size: 35px;
   }
-  .content-cata{
+  .content-cata {
     padding-right: 0px;
   }
 }
@@ -42,6 +42,10 @@
   }
   .idxbanner > .container > .row > div:nth-child(3) {
     padding-top: 15px;
+  }
+  /* prodetail */
+  .proddetail{
+    width:100% !important;
   }
   /* footer */
   .footer-cata {
@@ -326,7 +330,11 @@
 .mainproduct > .container > div {
   padding-bottom: 60px;
 }
-
+.otherprod > .container > div{
+  padding-bottom:60px;
+  position: relative;
+}
+.otherprod > .container > div > h3,
 .newproduct > .container > div > h3,
 .mainproduct > .container > div > h3 {
   font-family: Montserrat-Bold;
@@ -457,7 +465,7 @@
 }
 /* 圖片 */
 /* 左右箭頭 */
-#slider-mainprod,
+#otherprod #slider-mainprod,
 #slider-newprod {
   position: relative;
   margin-right: -15px;
@@ -528,7 +536,6 @@
   padding: 15px 0;
 }
 
-
 /* 商品頁 */
 /* Prod title page */
 .title-area {
@@ -542,101 +549,142 @@
   padding-top: 50px;
   padding-bottom: 40px;
   display: flex;
-	flex-direction: column;
-	align-items: center;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   text-align: center;
 }
-.title-area h2{
+.title-area h2 {
   font-family: Montserrat-Bold;
-	font-size: 50px;
-	color: white;
-	line-height: 1.2;
-	text-transform: uppercase;
+  font-size: 50px;
+  color: white;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
-.title-area p{
+.title-area p {
   font-family: Montserrat-Regular;
-	font-size: 18px;
-	color: white;
-	line-height: 1.8;
+  font-size: 18px;
+  color: white;
+  line-height: 1.8;
 }
 /* 商品清單列內容 */
-.prod-content-page{
+.prod-content-page {
   background: white;
-  padding-top:55px;
+  padding-top: 55px;
   padding-bottom: 65px;
 }
-.prod-content-left{
+.prod-content-left {
   padding-bottom: 30px;
 }
-.content-cata{
+.content-cata {
   padding-right: 20px;
 }
-.content-cata h4{
+.content-cata h4 {
   font-family: Montserrat-Black;
-	font-size: 18px;
-	color: #333333;
+  font-size: 18px;
+  color: #333333;
   line-height: 1.5;
   padding-bottom: 7px;
 }
-.content-cata ul{
+.content-cata ul {
   padding-bottom: 30px;
 }
-.content-cata ul li{
+.content-cata ul li {
   padding-bottom: 4px;
 }
-.content-cata ul li a{
+.content-cata ul li a {
   font-family: Montserrat-Regular;
-	font-size: 15px;
-	color: #888888;
+  font-size: 15px;
+  color: #888888;
   line-height: 1.8;
   text-decoration: none;
-    
 }
-.content-cata ul li a:hover{
+.content-cata ul li a:hover {
   color: #e65540;
 }
 
-.cata-active{
-  color:red !important;
+.cata-active {
+  color: red !important;
 }
-.search-product{
+.search-product {
   position: relative;
   border: 1px solid #e6e6e6;
   border-radius: 2px;
   overflow: hidden;
-margin-bottom: 54px;
+  margin-bottom: 54px;
 }
-.iptsearch{
+.iptsearch {
   font-family: Montserrat-Regular;
-	font-size: 13px;
-	color: #555555;
+  font-size: 13px;
+  color: #555555;
   line-height: 1.8;
   width: 100%;
   height: 58px;
   padding-left: 23px;
   padding-right: 50px;
 }
-.searchbar{
+.searchbar {
   position: absolute;
-	right: 0px;
-	top: 50%;
+  right: 0px;
+  top: 50%;
   transform: translateY(-50%);
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
   width: 50px;
   height: 58px;
   color: #333333;
   transition: all 0.4s;
 }
-.searchbar:hover{
+.searchbar:hover {
   color: #e65540;
 }
-.showresult{
-  padding:15px 0px;
+.showresult {
+  padding: 15px 0px;
   font-family: Montserrat-Regular;
-	font-size: 13px;
+  font-size: 13px;
+  color: #888888;
+  line-height: 1.8;
+}
+
+.otherprod {
+  background: white;
+  padding-top: 45px;
+  padding-bottom: 138px;
+}
+.proddetail--price{
+  font-family: Montserrat-Regular;
+	font-size: 30px;
+	color: #555555;
+	line-height: 1.2;
+}
+.proddetail{
+  width: calc(47% - 55px);
+  padding-top:30px;
+}
+.proddetail-name{
+  font-family: Montserrat-Regular;
+	font-size: 1.5rem;
+	color: #222222;
+  line-height: 1.5;
+  padding-bottom: 13px;
+}
+.short-desc{
+  font-family: Montserrat-Regular;
+	font-size: 1rem;
 	color: #888888;
-	line-height: 1.8;
+  line-height: 1.8;
+  padding-bottom: 10px;
+}
+/*  */
+.wrap-slick3{
+  display: flex;
+  justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+/* 會員專區 */
+#memberarea{
+  height: 100%;
+  margin-top: 20px;
 }

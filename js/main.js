@@ -82,16 +82,16 @@
 
      /*[ Fixed Header ]
     ===========================================================*/
-    var posWrapHeader = $('.wrap_header').height();
-    var header = $('.container-menu-header');
+    // var posWrapHeader = $('.wrap_header').height();
+    // var header = $('.container-menu-header');
 
-    $(window).on('scroll',function(){
+    // $(window).on('scroll',function(){
 
-        if($(this).scrollTop() >= posWrapHeader) {
-            $(header).css('position','fixed'); 
-        }  
+    //     if($(this).scrollTop() >= posWrapHeader) {
+    //         $(header).css('position','fixed'); 
+    //     }  
 
-    });
+    // });
     
     /*[ Show menu mobile ]
     ===========================================================*/
