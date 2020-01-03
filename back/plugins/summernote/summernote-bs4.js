@@ -365,7 +365,6 @@
           },
           options: {
               help: 'Help',
-              fullscreen: 'Full Screen',
               codeview: 'Code View'
           },
           paragraph: {
@@ -6046,33 +6045,11 @@
                   click: _this.context.createInvokeHandler('linkDialog.show')
               }).render();
           });
-          this.context.memo('button.picture', function () {
-              return _this.button({
-                  contents: _this.ui.icon(_this.options.icons.picture),
-                  tooltip: _this.lang.image.image,
-                  click: _this.context.createInvokeHandler('imageDialog.show')
-              }).render();
-          });
-          this.context.memo('button.video', function () {
-              return _this.button({
-                  contents: _this.ui.icon(_this.options.icons.video),
-                  tooltip: _this.lang.video.video,
-                  click: _this.context.createInvokeHandler('videoDialog.show')
-              }).render();
-          });
           this.context.memo('button.hr', function () {
               return _this.button({
                   contents: _this.ui.icon(_this.options.icons.minus),
                   tooltip: _this.lang.hr.insert + _this.representShortcut('insertHorizontalRule'),
                   click: _this.context.createInvokeHandler('editor.insertHorizontalRule')
-              }).render();
-          });
-          this.context.memo('button.fullscreen', function () {
-              return _this.button({
-                  className: 'btn-fullscreen',
-                  contents: _this.ui.icon(_this.options.icons.arrowsAlt),
-                  tooltip: _this.lang.options.fullscreen,
-                  click: _this.context.createInvokeHandler('fullscreen.toggle')
               }).render();
           });
           this.context.memo('button.codeview', function () {
@@ -6477,10 +6454,6 @@
               }
           }
           this.followScroll();
-      };
-      Toolbar.prototype.updateFullscreen = function (isFullscreen) {
-          this.ui.toggleBtnActive(this.$toolbar.find('.btn-fullscreen'), isFullscreen);
-          this.changeContainer(isFullscreen);
       };
       Toolbar.prototype.updateCodeview = function (isCodeview) {
           this.ui.toggleBtnActive(this.$toolbar.find('.btn-codeview'), isCodeview);
@@ -7518,7 +7491,6 @@
               ['color', ['color']],
               ['para', ['ul', 'ol', 'paragraph']],
               ['table', ['table']],
-              ['insert', ['link', 'picture', 'video']],
               ['view', ['fullscreen', 'codeview', 'help']],
           ],
           // popover
@@ -7541,7 +7513,6 @@
                   ['font', ['bold', 'underline', 'clear']],
                   ['para', ['ul', 'paragraph']],
                   ['table', ['table']],
-                  ['insert', ['link', 'picture']],
               ]
           },
           // air mode: inline editor
@@ -7736,7 +7707,6 @@
               'minus': 'note-icon-minus',
               'orderedlist': 'note-icon-orderedlist',
               'pencil': 'note-icon-pencil',
-              'picture': 'note-icon-picture',
               'question': 'note-icon-question',
               'redo': 'note-icon-redo',
               'rollback': 'note-icon-rollback',

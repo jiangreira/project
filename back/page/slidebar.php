@@ -30,10 +30,30 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="prod.php" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>商品管理</p>
+            <a class="nav-link"><i class="nav-icon fas fa-tree"></i>
+              <p>商品管理<i class="fas fa-angle-left right"></i></p>
             </a>
+            <!-- 底下項目 -->
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="prodadd.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>新增商品</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="prod.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>商品清單</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="catalog.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>分類設定</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="member.php" class="nav-link">
@@ -42,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="salemanagement.php" class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 首頁設定
@@ -52,15 +72,21 @@
             <!-- 底下項目 -->
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="salebigpic.php".php" class="nav-link">
+                <a href="salecarousel.php".php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>輪播圖管理</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="salemainprod.php".php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>2</p>
+                  <p>強打活動顯示設定</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="salenewprod.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>最新商品顯示設定</p>
                 </a>
               </li>
             </ul>
