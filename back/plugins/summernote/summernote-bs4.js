@@ -366,6 +366,10 @@
           options: {
               help: 'Help',
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+              fullscreen: 'Full Screen',
+>>>>>>> Stashed changes
 =======
               fullscreen: 'Full Screen',
 >>>>>>> Stashed changes
@@ -6050,7 +6054,10 @@
               }).render();
           });
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
           this.context.memo('button.picture', function () {
               return _this.button({
                   contents: _this.ui.icon(_this.options.icons.picture),
@@ -6065,6 +6072,9 @@
                   click: _this.context.createInvokeHandler('videoDialog.show')
               }).render();
           });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
           this.context.memo('button.hr', function () {
               return _this.button({
@@ -6074,7 +6084,10 @@
               }).render();
           });
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
           this.context.memo('button.fullscreen', function () {
               return _this.button({
                   className: 'btn-fullscreen',
@@ -6083,6 +6096,9 @@
                   click: _this.context.createInvokeHandler('fullscreen.toggle')
               }).render();
           });
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
           this.context.memo('button.codeview', function () {
               return _this.button({
@@ -6488,11 +6504,17 @@
           this.followScroll();
       };
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
       Toolbar.prototype.updateFullscreen = function (isFullscreen) {
           this.ui.toggleBtnActive(this.$toolbar.find('.btn-fullscreen'), isFullscreen);
           this.changeContainer(isFullscreen);
       };
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
       Toolbar.prototype.updateCodeview = function (isCodeview) {
           this.ui.toggleBtnActive(this.$toolbar.find('.btn-codeview'), isCodeview);
@@ -7531,6 +7553,10 @@
               ['para', ['ul', 'ol', 'paragraph']],
               ['table', ['table']],
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+              ['insert', ['link', 'picture', 'video']],
+>>>>>>> Stashed changes
 =======
               ['insert', ['link', 'picture', 'video']],
 >>>>>>> Stashed changes
@@ -7557,6 +7583,10 @@
                   ['para', ['ul', 'paragraph']],
                   ['table', ['table']],
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+                  ['insert', ['link', 'picture']],
+>>>>>>> Stashed changes
 =======
                   ['insert', ['link', 'picture']],
 >>>>>>> Stashed changes
@@ -7755,6 +7785,10 @@
               'orderedlist': 'note-icon-orderedlist',
               'pencil': 'note-icon-pencil',
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+              'picture': 'note-icon-picture',
+>>>>>>> Stashed changes
 =======
               'picture': 'note-icon-picture',
 >>>>>>> Stashed changes
