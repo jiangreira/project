@@ -365,14 +365,8 @@
           },
           options: {
               help: 'Help',
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
               fullscreen: 'Full Screen',
->>>>>>> Stashed changes
-=======
               fullscreen: 'Full Screen',
->>>>>>> Stashed changes
               codeview: 'Code View'
           },
           paragraph: {
@@ -6053,11 +6047,6 @@
                   click: _this.context.createInvokeHandler('linkDialog.show')
               }).render();
           });
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
           this.context.memo('button.picture', function () {
               return _this.button({
                   contents: _this.ui.icon(_this.options.icons.picture),
@@ -6072,10 +6061,6 @@
                   click: _this.context.createInvokeHandler('videoDialog.show')
               }).render();
           });
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
           this.context.memo('button.hr', function () {
               return _this.button({
                   contents: _this.ui.icon(_this.options.icons.minus),
@@ -6083,11 +6068,6 @@
                   click: _this.context.createInvokeHandler('editor.insertHorizontalRule')
               }).render();
           });
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
           this.context.memo('button.fullscreen', function () {
               return _this.button({
                   className: 'btn-fullscreen',
@@ -6096,10 +6076,6 @@
                   click: _this.context.createInvokeHandler('fullscreen.toggle')
               }).render();
           });
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
           this.context.memo('button.codeview', function () {
               return _this.button({
                   className: 'btn-codeview',
@@ -6503,19 +6479,10 @@
           }
           this.followScroll();
       };
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
       Toolbar.prototype.updateFullscreen = function (isFullscreen) {
           this.ui.toggleBtnActive(this.$toolbar.find('.btn-fullscreen'), isFullscreen);
           this.changeContainer(isFullscreen);
       };
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       Toolbar.prototype.updateCodeview = function (isCodeview) {
           this.ui.toggleBtnActive(this.$toolbar.find('.btn-codeview'), isCodeview);
           if (isCodeview) {
@@ -7552,14 +7519,8 @@
               ['color', ['color']],
               ['para', ['ul', 'ol', 'paragraph']],
               ['table', ['table']],
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
               ['insert', ['link', 'picture', 'video']],
->>>>>>> Stashed changes
-=======
               ['insert', ['link', 'picture', 'video']],
->>>>>>> Stashed changes
               ['view', ['fullscreen', 'codeview', 'help']],
           ],
           // popover
@@ -7582,14 +7543,8 @@
                   ['font', ['bold', 'underline', 'clear']],
                   ['para', ['ul', 'paragraph']],
                   ['table', ['table']],
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
                   ['insert', ['link', 'picture']],
->>>>>>> Stashed changes
-=======
                   ['insert', ['link', 'picture']],
->>>>>>> Stashed changes
               ]
           },
           // air mode: inline editor
@@ -7784,14 +7739,8 @@
               'minus': 'note-icon-minus',
               'orderedlist': 'note-icon-orderedlist',
               'pencil': 'note-icon-pencil',
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
               'picture': 'note-icon-picture',
->>>>>>> Stashed changes
-=======
               'picture': 'note-icon-picture',
->>>>>>> Stashed changes
               'question': 'note-icon-question',
               'redo': 'note-icon-redo',
               'rollback': 'note-icon-rollback',
