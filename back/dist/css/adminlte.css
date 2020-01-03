@@ -61,6 +61,10 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
+<<<<<<< Updated upstream
+=======
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+>>>>>>> Stashed changes
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -4853,7 +4857,10 @@ input[type="button"].btn-block {
 }
 
 .breadcrumb {
+<<<<<<< Updated upstream
   font-family: "Noto Sans TC", sans-serif;
+=======
+>>>>>>> Stashed changes
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -11270,8 +11277,12 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 }
 
 .content-header {
+<<<<<<< Updated upstream
   padding: 12px 0.5rem;
   line-height: 50px;
+=======
+  padding: 15px 0.5rem;
+>>>>>>> Stashed changes
 }
 
 .text-sm .content-header {
@@ -11289,7 +11300,11 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 
 .content-header .breadcrumb {
   background: transparent;
+<<<<<<< Updated upstream
   /* line-height: 1.8rem; */
+=======
+  line-height: 1.8rem;
+>>>>>>> Stashed changes
   margin-bottom: 0;
   padding: 0;
 }
@@ -25457,8 +25472,13 @@ html.maximized-card {
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {
+<<<<<<< Updated upstream
   background: #e9ecef;
   color: #1F2D3D;
+=======
+  background: #2f3740;
+  color: white;
+>>>>>>> Stashed changes
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,

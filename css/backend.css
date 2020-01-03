@@ -1,0 +1,84 @@
+/**
+ * /* table
+ *
+ * @format
+ */
+
+#carouseltable .panel-body .table-bordered {
+  /* border-style: none; */
+  margin: 0;
+  background: #c4dfdf;
+}
+
+#carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(1),
+#carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(2),
+#carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(3) {
+  text-align: center;
+  width: 120px;
+}
+/* 圖片 */
+#carouseltable .panel-body .table-bordered > thead > tr > th:last-of-type,
+#carouseltable .panel-body .table-bordered > tbody > tr > td:last-of-type {
+  text-align: left;
+  border-right: 0px;
+}
+
+#carouseltable .panel-body .table-bordered > thead > tr > th:first-of-type,
+#carouseltable .panel-body .table-bordered > tbody > tr > td:first-of-type {
+  border-left: 0px;
+}
+
+#carouseltable .panel-body .table-bordered > tbody > tr:first-of-type > td {
+  border-bottom: 0px;
+}
+
+#carouseltable .panel-body .table-bordered > thead > tr:first-of-type > th {
+  border-top: 0px;
+}
+.panel-body {
+  overflow: auto;
+}
+.panel-body tbody img {
+  width: 500px;
+}
+#carouseltable .table thead th {
+  vertical-align: bottom;
+  border: 2px solid #0f3b68;
+}
+#carouseltable .table-bordered {
+  border: 2px solid #0f3b68;
+}
+
+#carouseltable .table-bordered th,
+#carouseltable .table-bordered td {
+  border: 2px solid #0f3b68;
+}
+
+#carouseltable .table-bordered thead th,
+#carouseltable .table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+/*
+  used to vertically center elements, may need modification if you're not using default sizes.
+  */
+#carouseltable .panel-footer .col {
+  line-height: 34px;
+  height: 34px;
+  margin-top: 30px;
+}
+
+#carouseltable .panel-body .table-bordered > tbody > tr > td {
+  text-align: center;
+  line-height: 120px;
+}
+@media (max-width: 768px) {
+  #carouseltable .panel-body .table-bordered > tbody > tr > td {
+    line-height: 160px !important;
+  }
+  #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(1),
+  #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(2),
+  #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(3) {
+    min-width: 110px !important;
+  }
+}
