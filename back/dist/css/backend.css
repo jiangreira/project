@@ -1,11 +1,13 @@
-.titleh1{
-    font-family: "Noto Sans TC", sans-serif;
-    margin:0;
-    color:black;
-    font-size: 1.8rem;
+/** @format */
+
+.titleh1 {
+  font-family: "Noto Sans TC", sans-serif;
+  margin: 0;
+  color: black;
+  font-size: 1.8rem;
 }
-.cht{
-    font-family: "Noto Sans TC", sans-serif;
+.cht {
+  font-family: "Noto Sans TC", sans-serif;
 }
 
 /**
@@ -14,91 +16,171 @@
  * @format
  */
 
- #carouseltable .panel-body .table-bordered {
-    /* border-style: none; */
-    margin: 0;
-    background: #c4dfdf;
+#carouseltable .panel-body .table-bordered {
+  /* border-style: none; */
+  margin: 0;
+  background: #c4dfdf;
+}
+
+#carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(1),
+#carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(2),
+#carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(3) {
+  text-align: center;
+  width: 120px;
+}
+/* 圖片 */
+#carouseltable .panel-body .table-bordered > thead > tr > th:last-of-type,
+#carouseltable .panel-body .table-bordered > tbody > tr > td:last-of-type {
+  text-align: left;
+  border-right: 0px;
+}
+
+#carouseltable .panel-body .table-bordered > thead > tr > th:first-of-type,
+#carouseltable .panel-body .table-bordered > tbody > tr > td:first-of-type {
+  border-left: 0px;
+}
+
+#carouseltable .panel-body .table-bordered > tbody > tr:first-of-type > td {
+  border-bottom: 0px;
+}
+
+#carouseltable .panel-body .table-bordered > thead > tr:first-of-type > th {
+  border-top: 0px;
+}
+.panel-body {
+  overflow: auto;
+}
+.panel-body tbody img {
+  width: 500px;
+}
+#carouseltable .table thead th {
+  vertical-align: bottom;
+  border: 2px solid #0f3b68;
+}
+#carouseltable .table-bordered {
+  border: 2px solid #0f3b68;
+}
+
+#carouseltable .table-bordered th,
+#carouseltable .table-bordered td {
+  border: 2px solid #0f3b68;
+}
+
+#carouseltable .table-bordered thead th,
+#carouseltable .table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+/*
+    used to vertically center elements, may need modification if you're not using default sizes.
+    */
+#carouseltable .panel-footer .col {
+  line-height: 34px;
+  height: 34px;
+  margin-top: 30px;
+}
+
+#carouseltable .panel-body .table-bordered > tbody > tr > td {
+  text-align: center;
+  line-height: 120px;
+}
+@media (max-width: 768px) {
+  #carouseltable .panel-body .table-bordered > tbody > tr > td {
+    line-height: 160px !important;
   }
-  
   #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(1),
   #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(2),
   #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(3) {
-    text-align: center;
-    width: 120px;
+    min-width: 110px !important;
   }
-  /* 圖片 */
-  #carouseltable .panel-body .table-bordered > thead > tr > th:last-of-type,
-  #carouseltable .panel-body .table-bordered > tbody > tr > td:last-of-type {
-    text-align: left;
-    border-right: 0px;
-  }
-  
-  #carouseltable .panel-body .table-bordered > thead > tr > th:first-of-type,
-  #carouseltable .panel-body .table-bordered > tbody > tr > td:first-of-type {
-    border-left: 0px;
-  }
-  
-  #carouseltable .panel-body .table-bordered > tbody > tr:first-of-type > td {
-    border-bottom: 0px;
-  }
-  
-  #carouseltable .panel-body .table-bordered > thead > tr:first-of-type > th {
-    border-top: 0px;
-  }
-  .panel-body {
-    overflow: auto;
-  }
-  .panel-body tbody img {
-    width: 500px;
-  }
-  #carouseltable .table thead th {
-    vertical-align: bottom;
-    border: 2px solid #0f3b68;
-  }
-  #carouseltable .table-bordered {
-    border: 2px solid #0f3b68;
-  }
-  
-  #carouseltable .table-bordered th,
-  #carouseltable .table-bordered td {
-    border: 2px solid #0f3b68;
-  }
-  
-  #carouseltable .table-bordered thead th,
-  #carouseltable .table-bordered thead td {
-    border-bottom-width: 2px;
-  }
-  
-  /*
-    used to vertically center elements, may need modification if you're not using default sizes.
-    */
-  #carouseltable .panel-footer .col {
-    line-height: 34px;
-    height: 34px;
-    margin-top: 30px;
-  }
-  
-  #carouseltable .panel-body .table-bordered > tbody > tr > td {
-    text-align: center;
-    line-height: 120px;
-  }
-  @media (max-width: 768px) {
-    #carouseltable .panel-body .table-bordered > tbody > tr > td {
-      line-height: 160px !important;
-    }
-    #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(1),
-    #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(2),
-    #carouseltable .panel-body .table-bordered > thead > tr > th:nth-child(3) {
-      min-width: 110px !important;
-    }
-  }
+}
 
-  /* prodadd */
-  .tablespec{
-    overflow: auto;
+/* prodadd */
+.tablespec {
+  overflow: auto;
+}
+#prodspec thead tr th {
+  text-align: center;
+  line-height: 50px;
+  min-width: 200px;
+}
+.piccontent {
+  height: 250px;
+  margin-top: 20px;
+}
+.upload {
+  width:100%;
+  margin: 50px 0px;
+}
+
+.uploadImage {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: url('../img/add-file.png') no-repeat;
+  background-size: cover;
+  text-align: center;
+  cursor: pointer;
+}
+.uploadImage input#prodpic {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.preview {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  width: 100px;
+  height: 100px;
+  background: #163f79;
+  text-align: center;
+}
+.preview img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+.preview img[src=""] {
+  opacity: 0;
+  filter: Alpha(0); /* 相容IE8-9 */
+}
+.preview img:not([src]) {
+  opacity: 0;
+  filter: Alpha(0); /* 相容IE8-9 */
+}
+.preview .word {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  line-height: 100px;
+  font-size: 14px;
+  color: #ffffff;
+  z-index: 0;
+}
+
+
+/* catalog */
+.catalist{
+  overflow: auto;
+}
+#cataloglist thead tr th {
+  text-align: center;
+  line-height: 25px;
+  min-width: 150px;
+}
+@media (max-width: 768px) {
+  #cataloglist thead tr th {
+    min-width: 200px !important;
   }
-  #prodspec thead tr th{
-    text-align: center;
-    line-height: 50px;
-    min-width:200px;
-  }
+}
+
+.cataadd{
+  margin: 15px 0px;
+}

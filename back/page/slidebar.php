@@ -48,7 +48,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="catalog.php" class="nav-link">
+                <a href="cataloge.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>分類設定</p>
                 </a>
