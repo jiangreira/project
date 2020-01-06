@@ -133,6 +133,11 @@ function plo($link){
 //     echo copy($file['tmp_name'],"upload/".$newname);
 //     return $newname;
 // }
+function addfile($file){
+    $newname=time()."_".$file['name'];
+    echo copy($file['tmp_name'],"upload/".$newname);
+    return $newname;
+}
 // //分頁           資料表,條件,一頁要幾個,目前哪頁
 // function navpage($table,$where,$range,$nowpage){
 //     $result=select($table,$where);

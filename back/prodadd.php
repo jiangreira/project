@@ -65,7 +65,7 @@
       <section class="content">
         <div class="container-fluid">
 
-          <form method="POST" action="api/prod.api.php?prod=add">
+          <form method="POST" action="api/prod.api.php?prod=add" enctype="multipart/form-data" onkeydown="if(event.keyCode==13)return false">
             <button type="submit" class="btn btn-primary">新增</button>
             <hr>
             <div class="form-row">
@@ -137,9 +137,6 @@
                     <th>顏色</th>
                     <th>尺寸</th>
                     <th>型號</th>
-                    <th>售價</th>
-                    <th>會員價</th>
-                    <th>一般價</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -151,9 +148,6 @@
                     <td><input type="text" name="prodspec[color][]" class="form-control" /></td>
                     <td><input type="text" name="prodspec[size][]" class="form-control" /></td>
                     <td><input type="text" name="prodspec[spec][]" class="form-control" /></td>
-                    <td><input type="text" name="prodspec[price][]" class="form-control" /></td>
-                    <td><input type="text" name="prodspec[mprice][]" class="form-control" /></td>
-                    <td><input type="text" name="prodspec[nprice][]" class="form-control" /></td>
                   </tr>
                 </tbody>
               </table>
@@ -252,10 +246,6 @@
                   <td><input type="text" name="prodspec[color][]" class="form-control"></td>
                   <td><input type="text" name="prodspec[size][]" class="form-control"></td>
                   <td><input type="text" name="prodspec[spec][]" class="form-control"></td>
-                  <td><input type="text" name="prodspec[price][]" class="form-control"></td>
-                  <td><input type="text" name="prodspec[mprice][]" class="form-control"></td>
-                  <td><input type="text" name="prodspec[nprice][]" class="form-control"></td>
-                  
                 </tr>`);
     }
 
