@@ -65,37 +65,66 @@
       <section class="content">
         <div class="container-fluid">
 
-          <form>
+          <form method="POST" action="api/prod.api.php?prod=add">
             <button type="submit" class="btn btn-primary">新增</button>
             <hr>
             <div class="form-row">
               <div class="form-column col-6">
                 <div class="form-group mb-4">
                   <label for="prodname">商品名稱(20字)</label>
-                  <input type="email" class="form-control" id="prodname" />
+                  <input type="text" class="form-control" name="prodname" />
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label>主分類</label>
-                    <select class="form-control dropmain" onchange='ischg()'>
+                    <select name="maincate" class="form-control dropmain" onchange='ischg()'>
                     </select>
                   </div>
                   <div class="form-group col-md-6">
                     <label>次分類</label>
-                    <select class="form-control dropsub">
-
+                    <select name="subcate" class="form-control dropsub">
                     </select>
                   </div>
-
                 </div>
-
-
+                <div class="form-row mt-3 mb-3">
+                  <div class="form-group col-md-3">
+                    <label>商品成本</label>
+                    <input type="text" name="costprice" class="form-control">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label>商品售價</label>
+                    <input type="text" name="price" class="form-control">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label>一般會員價</label>
+                    <input type="text" name="nprice" class="form-control">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label>會員價</label>
+                    <input type="text" name="pkprice" class="form-control">
+                  </div>
+                </div>
               </div>
-              <div class="form-group col-6">
-                <label for="prodshortdesc">簡短敘述(100字</label>
-                <textarea class="form-control" rows="5" id="prodshortdesc" required></textarea>
+              <div class="form-group col-6 ">
+                <label>商品圖片</label>
+                <div class="upload">
+                  <div class="uploadImage">
+                    <input type="file" name="prodpic[]" id="prodpic" multiple="multiple" accept="image/png, image/jpeg, image/gif, image/jpg" multiple />
+                  </div>
+                  <div class="preview">
+                    <img src="" id="prodpic1" />
+                    <p class="word">圖片1</p>
+                  </div>
+                  <div class="preview">
+                    <img src="" id="prodpic2" />
+                    <p class="word">圖片2</p>
+                  </div>
+                  <div class="preview">
+                    <img src="" id="prodpic3" />
+                    <p class="word">圖片3</p>
+                  </div>
+                </div>
               </div>
-
             </div>
             <hr>
             <!-- 規格 -->
@@ -130,32 +159,20 @@
               </table>
             </div>
             <hr />
-            <!-- 圖片 -->
-            <label>商品圖片</label>
-            <div class="upload">
-              <div class="uploadImage">
-                <input type="file" name="prodpic[]" id="prodpic" multiple="multiple" accept="image/png, image/jpeg, image/gif, image/jpg" multiple />
-              </div>
-              <div class="preview">
-                <img src="" id="prodpic1" />
-                <p class="word">圖片1</p>
-              </div>
-              <div class="preview">
-                <img src="" id="prodpic2" />
-                <p class="word">圖片2</p>
-              </div>
-              <div class="preview">
-                <img src="" id="prodpic3" />
-                <p class="word">圖片3</p>
-              </div>
+            <h3>非必填 
+              .01
+            </h3>
+            <div class="form-group ">
+              <label for="prodshortdesc">簡短敘述(100字)</label>
+              <textarea class="form-control" rows="5" name="prodshortdesc"></textarea>
             </div>
-
             <!-- 商品敘述 -->
             <div class="form-group">
               <!-- $('#proddesc').val() -->
               <label for="proddesc">商品敘述</label>
-              <textarea id="proddesc" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+              <textarea id="proddesc" name="proddesc" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
             </div>
+            
 
             <button type="submit" class="btn btn-primary">新增</button>
           </form>
@@ -187,7 +204,6 @@
   <!-- summernote editor -->
   <script src="plugins/summernote/summernote-bs4.js"></script>
   <script type="text/javascript">
-
     var dropcatamain;
     $(document).ready(function() {
       bsCustomFileInput.init();
@@ -211,23 +227,21 @@
     // 當slect選擇主分類時顯示該分類底下的次分類
     function ischg() {
       let id = $('.dropmain').val();
-      $.post('api/cata.api.php?cata=catasublist', {id}, function(re) {
-          if (re) {
-            catasublist = JSON.parse(re);
-            let print = "<option value='ori'>請選擇分類</option>";
-            for (let i = 0; i < catasublist.length; i++) {
-              print += `
+      $.post('api/cata.api.php?cata=catasublist', {
+        id
+      }, function(re) {
+        if (re) {
+          catasublist = JSON.parse(re);
+          let print = "<option value='ori'>請選擇分類</option>";
+          for (let i = 0; i < catasublist.length; i++) {
+            print += `
               <option value='${catasublist[i].Id}'>${catasublist[i].Name}</option>}`;
-            }
-            $('.dropsub').append(print);
           }
-        })
-      
+          $('.dropsub').html(print);
+        }
+      })
+
     }
-    
-
-
-
 
     function specadd() {
       $("tbody").append(`<tr>
