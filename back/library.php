@@ -13,6 +13,15 @@ function select($table,$where){
     $sql="SELECT * FROM ".$table." WHERE ".$where;
     return $db->query($sql)->fetchAll();
 }
+function selectcolumn($table,$column,$where){
+    global $db,$time,$time_content;
+    if(empty($where)){
+        $sql="SELECT ".$column." From ".$table;
+    }else
+    $sql="SELECT ".$column." From ".$table." WHERE ".$where;
+    // print_r($sql);
+    return $db->query($sql)->fetchAll();
+}
 
 
 function selectcata($table,$where){
@@ -60,37 +69,38 @@ function insertcata($ary,$table){
         $sql="INSERT INTO ".$table." (".$field.") VALUES (".$data.")";
         $db->query($sql);
         return $db->lastInsertId(); 
+        
     }
 }
 
 
 
-// function update($ary,$table){
-//     global $db;
-//     //這裡的需要判斷是針對進場人數+1的修該 還是 直接修改值的修改
-//     foreach($ary as $do=>$data){
-//         switch($do){
-//             case 'num+1':
-//             $sql="UPDATE ".$table." SET num=num+1 WHERE id=".$data; 
-//             $db->query($sql);
-//             //$data=對象id
-//             break;
-//             case 'num-1':
-//             $sql="UPDATE ".$table." SET num=num-1 WHERE id=".$data;
-//             $db->query($sql);
-//             //$data=對象id
-//             break;
-//             default:
-//             foreach ($data as $key => $value) {
-//                 //$data=內容結構,結構為['id']=修改新值              
-//                 $sql="UPDATE ".$table." SET ".$do."='".$value."' WHERE id=".$key;
-//                 $db->query($sql);
-//             }
-//             break;
+function update($ary,$table){
+    global $db;
+    //這裡的需要判斷是針對進場人數+1的修該 還是 直接修改值的修改
+    foreach($ary as $do=>$data){
+        switch($do){
+            case 'num+1':
+            $sql="UPDATE ".$table." SET num=num+1 WHERE id=".$data; 
+            $db->query($sql);
+            //$data=對象id
+            break;
+            case 'num-1':
+            $sql="UPDATE ".$table." SET num=num-1 WHERE id=".$data;
+            $db->query($sql);
+            //$data=對象id
+            break;
+            default:
+            foreach ($data as $key => $value) {
+                //$data=內容結構,結構為['id']=修改新值              
+                $sql="UPDATE ".$table." SET ".$do."='".$value."' WHERE id=".$key;
+                $db->query($sql);
+            }
+            break;
             
-//         }
-//     }
-// }
+        }
+    }
+}
 // function delete($ary,$table){
 //     global $db;
 //     foreach($ary as $do=>$data){

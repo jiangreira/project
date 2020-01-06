@@ -77,17 +77,12 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label>主分類</label>
-                    <select class="form-control">
-                      <option>option 1</option>
-                      <option>option 2</option>
-                      <option>option 3</option>
-                      <option>option 4</option>
-                      <option>option 5</option>
+                    <select class="form-control dropmain" onchange='ischg()'>
                     </select>
                   </div>
                   <div class="form-group col-md-6">
                     <label>次分類</label>
-                    <select class="form-control">
+                    <select class="form-control dropsub">
 
                     </select>
                   </div>
@@ -192,6 +187,8 @@
   <!-- summernote editor -->
   <script src="plugins/summernote/summernote-bs4.js"></script>
   <script type="text/javascript">
+
+    var dropcatamain;
     $(document).ready(function() {
       bsCustomFileInput.init();
     });
@@ -199,8 +196,39 @@
     $(function() {
       $("#proddesc").summernote();
     });
-    // 未上傳先隱藏圖片
-    // $('.input-group').find('img').hide();
+    // 取得主分類的下拉選單
+    $.get('api/cata.api.php?cata=catamain', function(re) {
+      dropcatamain = JSON.parse(re);
+      // console.log(dropcatamain);
+      let print = "<option value='ori'>請選擇分類</option>";
+      for (let i = 0; i < dropcatamain.length; i++) {
+        print += `
+        <option value="${dropcatamain[i].Id}">${dropcatamain[i].Name}</option>
+        `;
+      }
+      $('.dropmain').append(print)
+    })
+    // 當slect選擇主分類時顯示該分類底下的次分類
+    function ischg() {
+      let id = $('.dropmain').val();
+      $.post('api/cata.api.php?cata=catasublist', {id}, function(re) {
+          if (re) {
+            catasublist = JSON.parse(re);
+            let print = "<option value='ori'>請選擇分類</option>";
+            for (let i = 0; i < catasublist.length; i++) {
+              print += `
+              <option value='${catasublist[i].Id}'>${catasublist[i].Name}</option>}`;
+            }
+            $('.dropsub').append(print);
+          }
+        })
+      
+    }
+    
+
+
+
+
     function specadd() {
       $("tbody").append(`<tr>
                   <td>
