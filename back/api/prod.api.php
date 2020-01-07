@@ -42,4 +42,11 @@ switch ($_GET['prod']) {
             plo('../prodadd.php');     
         }
     break;
+    case'list':
+        // $sql="SELECT Id,Name,CateId,Price,NPrice,PkPrice,isMainSale FROM Picker_prod";
+        
+
+        $rows=selectcolumn("Picker_prod","Id,Name,CateId,Price,NPrice,PkPrice,isMainSale",'');
+        print_r($rows);
+    break;
 }
