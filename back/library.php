@@ -123,11 +123,11 @@ function plo($link){
     return header("location:".$link);
 }
 
-// //JS轉址
-// function jlo($link){
-//     return "location.href='".$link."'";
-//     //外面要自己加上<script>
-// }
+//JS轉址
+function jlo($link){
+    return "location.href='".$link."'";
+    //外面要自己加上<script>
+}
 // function addfile($file){
 //     $newname=time()."_".$file['name'];
 //     echo copy($file['tmp_name'],"upload/".$newname);

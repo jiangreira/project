@@ -62,74 +62,80 @@
       <!-- /.content-header -->
 
       <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
+      <section class="content ">
+        <div class="container">
 
           <form method="POST" action="api/prod.api.php?prod=add" enctype="multipart/form-data" onkeydown="if(event.keyCode==13)return false">
             <button type="submit" class="btn btn-primary">新增</button>
             <hr>
-            <div class="form-row">
-              <div class="form-column col-6">
-                <div class="form-group mb-4">
-                  <label for="prodname">商品名稱(20字)</label>
-                  <input type="text" class="form-control" name="prodname" />
+            <div class="form-group">
+              <h4>商品基本資訊<em class="fas fa-sort-down ml-2"></em></h4>
+              <label for="prodname">商品名稱(20字)</label>
+              <input type="text" class="form-control" name="prodname" />
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label>主分類</label>
+                  <select name="maincate" class="form-control dropmain" onchange='ischg()'>
+                  </select>
                 </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label>主分類</label>
-                    <select name="maincate" class="form-control dropmain" onchange='ischg()'>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label>次分類</label>
-                    <select name="subcate" class="form-control dropsub">
-                    </select>
-                  </div>
-                </div>
-                <div class="form-row mt-3 mb-3">
-                  <div class="form-group col-md-3">
-                    <label>商品成本</label>
-                    <input type="text" name="costprice" class="form-control">
-                  </div>
-                  <div class="form-group col-md-3">
-                    <label>商品售價</label>
-                    <input type="text" name="price" class="form-control">
-                  </div>
-                  <div class="form-group col-md-3">
-                    <label>一般會員價</label>
-                    <input type="text" name="nprice" class="form-control">
-                  </div>
-                  <div class="form-group col-md-3">
-                    <label>會員價</label>
-                    <input type="text" name="pkprice" class="form-control">
-                  </div>
+                <div class="form-group col-md-6">
+                  <label>次分類</label>
+                  <select name="subcate" class="form-control dropsub">
+                  </select>
                 </div>
               </div>
-              <div class="form-group col-6 ">
-                <label>商品圖片</label>
-                <div class="upload">
-                  <div class="uploadImage">
-                    <input type="file" name="prodpic[]" id="prodpic" multiple="multiple" accept="image/png, image/jpeg, image/gif, image/jpg" multiple />
-                  </div>
-                  <div class="preview">
-                    <img src="" id="prodpic1" />
-                    <p class="word">圖片1</p>
-                  </div>
-                  <div class="preview">
-                    <img src="" id="prodpic2" />
-                    <p class="word">圖片2</p>
-                  </div>
-                  <div class="preview">
-                    <img src="" id="prodpic3" />
-                    <p class="word">圖片3</p>
-                  </div>
+
+
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label>商品成本</label>
+                  <input type="text" name="costprice" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label>商品售價</label>
+                  <input type="text" name="price" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label>一般會員價</label>
+                  <input type="text" name="nprice" class="form-control">
+                </div>
+                <div class="form-group col-md-3">
+                  <label>會員價</label>
+                  <input type="text" name="pkprice" class="form-control">
                 </div>
               </div>
             </div>
-            <hr>
+            <div class="form-group">
+              <h4>商品圖片<em class="fas fa-sort-down ml-2"></em></h4>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <div class="custom-file">
+                    <input type="file" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
+                    <label class="custom-file-label" for="formcarousel">選擇檔案</label>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <div class="custom-file">
+                    <input type="file" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
+                    <label class="custom-file-label" for="formcarousel">選擇檔案</label>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <div class="custom-file">
+                    <input type="file" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
+                    <label class="custom-file-label" for="formcarousel">選擇檔案</label>
+                  </div>
+                </div>
+              </div>
+              <hr />
+            </div>
             <!-- 規格 -->
-            <label>商品規格</label>
-            <div class="tablespec">
+            <div class="form-group">
+              <h4>商品規格<em class="fas fa-sort-down ml-2"></em></h4>
               <table class="table table-bordered" id="prodspec">
                 <thead>
                   <tr>
@@ -137,38 +143,47 @@
                     <th>顏色</th>
                     <th>尺寸</th>
                     <th>型號</th>
+                    <th>庫存</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
-                      <a class="btn btn-info" onclick="specadd()"><em class="fas fa-plus"></em></a>
-                      <a class="btn btn-danger del" onclick="specdel(this)"><em class="fa fa-trash"></em></a>
+                      <a class="btn btn-info" onclick="specadd()"><em class="fas fa-plus text-light"></em></a>
+                      <a class="btn btn-danger text-light del" onclick="specdel(this)"><em class="fa fa-trash"></em></a>
                     </td>
                     <td><input type="text" name="prodspec[color][]" class="form-control" /></td>
                     <td><input type="text" name="prodspec[size][]" class="form-control" /></td>
                     <td><input type="text" name="prodspec[spec][]" class="form-control" /></td>
+                    <td><input type="text" name="prodspec[stock][]" class="form-control" /></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a class="btn btn-info" onclick="specadd()"><em class="fas fa-plus text-light"></em></a>
+                      <a class="btn btn-danger text-light del" onclick="specdel(this)"><em class="fa fa-trash"></em></a>
+                    </td>
+                    <td><input type="text" name="prodspec[color][]" class="form-control" /></td>
+                    <td><input type="text" name="prodspec[size][]" class="form-control" /></td>
+                    <td><input type="text" name="prodspec[spec][]" class="form-control" /></td>
+                    <td><input type="text" name="prodspec[stock][]" class="form-control" /></td>
                   </tr>
                 </tbody>
               </table>
+              <hr />
             </div>
-            <hr />
-            <h3>非必填 
-              .01
-            </h3>
+            <!-- 簡短敘述 -->
             <div class="form-group ">
-              <label for="prodshortdesc">簡短敘述(100字)</label>
+              <h4>簡短敘述<em class="fas fa-sort-down ml-2"></em></h4>
               <textarea class="form-control" rows="5" name="prodshortdesc"></textarea>
             </div>
             <!-- 商品敘述 -->
             <div class="form-group">
               <!-- $('#proddesc').val() -->
-              <label for="proddesc">商品敘述</label>
+              <h4>商品敘述<em class="fas fa-sort-down ml-2"></em></h4>
               <textarea id="proddesc" name="proddesc" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
             </div>
-            
-
-            <button type="submit" class="btn btn-primary">新增</button>
+            <hr>
+            <button type="submit" class="btn btn-primary mb-5">新增</button>
           </form>
         </div>
         <!-- /.container-fluid -->
@@ -240,12 +255,13 @@
     function specadd() {
       $("tbody").append(`<tr>
                   <td>
-                    <a class="btn btn-info" onclick="specadd()"><em class="fas fa-plus"></em></a>
-                    <a onclick="specdel(this)" class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                    <a class="btn btn-info text-light" onclick="specadd()"><em class="fas fa-plus"></em></a>
+                    <a onclick="specdel(this)" class="btn btn-danger text-light"><em class="fa fa-trash"></em></a>
                   </td>
                   <td><input type="text" name="prodspec[color][]" class="form-control"></td>
                   <td><input type="text" name="prodspec[size][]" class="form-control"></td>
                   <td><input type="text" name="prodspec[spec][]" class="form-control"></td>
+                  <td><input type="text" name="prodspec[stock][]" class="form-control"></td>
                 </tr>`);
     }
 
@@ -260,46 +276,6 @@
           .remove();
       }
     }
-    var hasUploadedOne = false; // 已上傳過1張圖片
-    var hasUploadedTwo = false; // 已上傳過2張圖片
-    var hasUploadedThree = false; // 已上傳過3張圖片
-
-    //獲取到預覽框
-    var imgObjPreview1 = document.getElementById("prodpic1");
-    var imgObjPreview2 = document.getElementById("prodpic2");
-    var imgObjPreview3 = document.getElementById("prodpic3");
-
-    document.getElementById("prodpic").onchange = function() {
-      // 若還沒完成2張圖片的上傳
-      if (!hasUploadedThree) {
-        //獲取到file的檔案
-        var docObj = this;
-
-        // 一次上傳了>=3張圖片（只有前3張會真的上傳上去）
-        if (docObj.files.length >= 3) {
-          imgObjPreview1.src = window.URL.createObjectURL(docObj.files[0]);
-          imgObjPreview2.src = window.URL.createObjectURL(docObj.files[1]);
-          imgObjPreview3.src = window.URL.createObjectURL(docObj.files[2]);
-          hasUploadedThree = true;
-        }
-        //一次只上傳了1張照片
-        else {
-          // 這是上傳的第一張照片
-          if (!hasUploadedOne) {
-            imgObjPreview1.src = window.URL.createObjectURL(docObj.files[0]);
-            hasUploadedOne = true;
-          }
-          // 這是上傳的第二張照片
-          else if (!hasUploadedTwo) {
-            imgObjPreview2.src = window.URL.createObjectURL(docObj.files[0]);
-            hasUploadedTwo = true;
-          } else {
-            imgObjPreview3.src = window.URL.createObjectURL(docObj.files[0]);
-            hasUploadedThree = true;
-          }
-        }
-      }
-    };
   </script>
 </body>
 

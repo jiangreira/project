@@ -259,8 +259,8 @@ require_once('library.php')
             for (let i = 0; i < catasublist.length; i++) {
               print += `<tr>
           <td>
-            <a class="btn btn-info" onclick="cataedit(this)"><em class="fa fa-pencil"></em></a>
-            <a class="btn btn-danger" onclick="catadel(this)"><em class="fa fa-trash"></em></a>
+            <a class="btn btn-info text-light" onclick="cataedit(this)"><em class="fa fa-pencil"></em></a>
+            <a class="btn btn-danger text-light" onclick="catadel(this)"><em class="fa fa-trash"></em></a>
           </td>
           <td>
             <input type="hidden" name="catasubid" value="${catasublist[i].Id}">
@@ -286,9 +286,9 @@ require_once('library.php')
           print += `
         <tr>
           <td>
-            <a class="btn btn-info" onclick="cataedit(this)"><em class="fa fa-pencil"></em></a>
-            <a class="btn btn-info" onclick="catasubadd(this)"><em class="fas fa-plus"></em></a>
-            <a class="btn btn-danger" onclick="catadel(this)"><em class="fa fa-trash"></em></a>
+            <a class="btn btn-info text-light" onclick="cataedit(this)"><em class="fa fa-pencil"></em></a>
+            <a class="btn btn-info text-light" onclick="catasubadd(this)"><em class="fas fa-plus"></em></a>
+            <a class="btn btn-danger text-light" onclick="catadel(this)"><em class="fa fa-trash"></em></a>
           </td>
           <td>
             <input type="hidden" name="catamainid" value="${list[i].Id}">
