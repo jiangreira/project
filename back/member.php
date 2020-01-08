@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>會員管理</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -13,20 +13,12 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="plugins/DataTables/datatables.css">
+  <link rel="stylesheet" href="dist/css/backend.css" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -47,13 +39,13 @@
           <div class="row mb-2">
             <!-- title page -->
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Dashboard</h1>
+              <h1 class="m-0 text-dark">會員管理</h1>
             </div><!-- /.col -->
             <!-- 麵包屑 -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
+                <li class="breadcrumb-item active">會員管理</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -61,76 +53,36 @@
       </div>
       <!-- /.content-header -->
 
+
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <h3>150</h3>
-                  <p>New Orders</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                  <p>Bounce Rate</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-warning">
-                <div class="inner">
-                  <h3>44</h3>
-
-                  <p>User Registrations</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3>65</h3>
-                  <p>Unique Visitors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
+          <a href="prodadd.php" type="button" class="btn btn-primary text-light">新增商品</a>
+          <div class="form-group mt-3 mb-3 prodlistselect">
+            <select class="dropdown2 membertype" onchange="membertype()">
+              <option value="all">全部</option>
+              <option value="pk">PK會員</option>
+              <option value="normal">一般會員</option>
+            </select>
           </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
+          <table class="table table-hover" id="memberlist">
+            <thead>
+              <tr>
+                <th><em class="fa fa-cog"></em></th>
+                <th>會員編號</th>
+                <th>會員名稱</th>
+                <th>會員類型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- list位置 -->
+            </tbody>
+          </table>
+
+        </div>
       </section>
-      <!-- /.content -->
+
     </div>
-    <!-- /.content-wrapper -->
     <footer class="main-footer"></footer>
   </div>
   <!-- ./wrapper -->
@@ -145,30 +97,74 @@
   </script>
   <!-- Bootstrap 4 -->
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="plugins/chart.js/Chart.min.js"></script>
-  <!-- Sparkline -->
-  <script src="plugins/sparklines/sparkline.js"></script>
-  <!-- JQVMap -->
-  <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-  <!-- jQuery Knob Chart -->
-  <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-  <!-- daterangepicker -->
-  <script src="plugins/moment/moment.min.js"></script>
-  <script src="plugins/daterangepicker/daterangepicker.js"></script>
-  <!-- Tempusdominus Bootstrap 4 -->
-  <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-  <!-- Summernote -->
-  <script src="plugins/summernote/summernote-bs4.min.js"></script>
-  <!-- overlayScrollbars -->
-  <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="dist/js/pages/dashboard.js"></script>
+  <!-- <script src="dist/js/pages/dashboard.js"></script> -->
   <!-- AdminLTE for demo purposes -->
   <script src="dist/js/demo.js"></script>
+  <!-- database -->
+  <script src="plugins/DataTables/datatables.js"></script>
+  <script>
+    var memberlist;
+    $('#memberlist').DataTable();
+    $.get('api/member.api.php?member=list&type=all', function(re) {
+      memberlist = JSON.parse(re);
+      let print = "";
+      for (i = 0; i < memberlist.length; i++) {
+        print += `
+              <tr>
+                <th></th>
+                <th>${memberlist[i].Id}</th>
+                <th>${memberlist[i].Name}</th>
+                <th>${memberlist[i].Type}</th>
+              </tr        
+        `;
+      }
+      $('tbody').html(print);
+    })
+
+    function membertype() {
+      var type = $('.membertype').val();
+      console.log(type);
+      if (type == 'pk') {
+        $.get('api/member.api.php?member=list&type=pk', {
+          type
+        }, function(re) {
+          memberlist = JSON.parse(re);
+          let print = "";
+          for (i = 0; i < memberlist.length; i++) {
+            print += `
+              <tr>
+                <th></th>
+                <th>${memberlist[i].Id}</th>
+                <th>${memberlist[i].Name}</th>
+                <th>${memberlist[i].Type}</th>
+              </tr        
+        `;
+          }
+          $('tbody').html(print);
+        })
+      } else {
+        $.get('api/member.api.php?member=list&type=normal', {
+          type
+        }, function(re) {
+          memberlist = JSON.parse(re);
+          let print = "";
+          for (i = 0; i < memberlist.length; i++) {
+            print += `
+              <tr>
+                <th></th>
+                <th>${memberlist[i].Id}</th>
+                <th>${memberlist[i].Name}</th>
+                <th>${memberlist[i].Type}</th>
+              </tr `;
+          }
+          $('tbody').html(print);
+        })
+      }
+    }
+  </script>
 </body>
 
 </html>

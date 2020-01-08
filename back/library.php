@@ -11,7 +11,7 @@ $time_content=",NOW(),NOW()";
 function select($table,$where){
     global $db,$time,$time_content;
     $sql="SELECT * FROM ".$table." WHERE ".$where;
-    return $db->query($sql)->fetchAll();
+    return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 function selectcolumn($table,$column,$where){
     global $db,$time,$time_content;

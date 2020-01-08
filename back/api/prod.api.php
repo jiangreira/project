@@ -28,7 +28,6 @@ switch ($_GET['prod']) {
                 $imgs = array();
                 for ($i = 0; $i < $counts; $i++) {
                     $newname = time() . "_" . $_FILES['prodpic']['name'][$i];
-                    print_r($newname);
                     copy($_FILES['prodpic']['tmp_name'][$i], "../upload-prod/" . $newname);
                     $imgs[] = $newname;
                 }

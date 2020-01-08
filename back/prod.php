@@ -150,6 +150,7 @@
         `;
       }
       $('.dropmain').append(print)
+      $('.dropsub').attr('disabled','disabled');//次分類disable
     })
     // 當slect選擇主分類時顯示該分類底下的次分類
     function mainischg() {
@@ -165,10 +166,12 @@
               print += `
               <option value='${catasublist[i].Id}'>${catasublist[i].Name}</option>}`;
               $('.dropsub').html(print);
+              $('.dropsub').removeAttr('disabled','');
             }
           } else {
             console.log('np')
             $('.dropsub').html("<option value='ori'>無次分類</option>");
+            $('.dropsub').attr('disabled','disabled');//次分類disable
           }
         })
       } else if (id == 'unhome') {
@@ -191,7 +194,8 @@
             </tr>
         `;
           }
-          $('.dropsub').attr('disabled','disabled');
+          $('.dropsub').attr('disabled','disabled');//次分類disable
+          $('.dropsub').html("<option value='ori'>-</option>");
           $('tbody').html(print);
           $('#tprodlist').DataTable();
         })
