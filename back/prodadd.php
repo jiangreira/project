@@ -217,7 +217,7 @@
     $(document).ready(function() {
       bsCustomFileInput.init();
     });
-
+    // editor套件
     $(function() {
       $("#proddesc").summernote();
     });

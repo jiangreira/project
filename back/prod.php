@@ -62,8 +62,10 @@
           <a href="prodadd.php" type="button" class="btn btn-primary text-light">新增商品</a>
           <div class="form-group mt-3 mb-3 prodlistselect">
             <form calss="">
-              <select name="maincate" class="dropdown2"></select>
-              <select name="subcate" class="dropdown2"></select>
+              <select name="maincate" class="dropdown2 dropmain" onchange="mainischg()"></select>
+              <select name="subcate" class="dropdown2 dropsub" onchange="subischg()">
+                <option value="ori">請先選擇主分類</option>
+              </select>
             </form>
           </div>
           <hr>
@@ -73,7 +75,6 @@
                 <th><em class="fa fa-cog"></em></th>
                 <th>商品編號</th>
                 <th>商品名稱</th>
-                <th>分類編號</th>
                 <th>售價</th>
                 <th>一般價</th>
                 <th>批客價</th>
@@ -81,19 +82,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <a class="btn btn-info text-light" onclick=""><em class="fa fa-pencil"></em></a>
-                  <a class="btn btn-danger text-light" onclick=""><em class="fa fa-trash"></em></a>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              <!-- list位置 -->
             </tbody>
           </table>
         </div>
@@ -121,12 +110,125 @@
 
 
   <script>
+    var tablelist;
     // 取得商品資料
     $.get('api/prod.api.php?prod=list', function(re) {
-      console.log(re);
+      tablelist = JSON.parse(re);
+      let print = "";
+      for (i = 0; i < tablelist.length; i++) {
+        print += `
+            <tr>
+                <td>
+                  <a class="btn btn-info text-light" onclick=""><em class="fa fa-pencil"></em></a>
+                  <a class="btn btn-danger text-light" onclick=""><em class="fa fa-trash"></em></a>
+                </td>
+                <td>${tablelist[i].Id}</td>
+                <td>${tablelist[i].Name}</td>
+                <td>${tablelist[i].Price}</td>
+                <td>${tablelist[i].NPrice}</td>
+                <td>${tablelist[i].PkPrice}</td>
+                <td>${(tablelist[i].isMainSale==0)?'否':'是'}</td>
+            </tr>
+        `;
+      }
+      $('tbody').html(print);
+      $('#tprodlist').DataTable();
     })
 
-    $('#tprodlist').DataTable();
+
+    // 取得主分類的下拉選單
+    $.get('api/cata.api.php?cata=catamain', function(re) {
+      dropcatamain = JSON.parse(re);
+      // console.log(dropcatamain);
+      let print = `
+      <option value='ori'>請選擇分類</option>
+      <option value='unhome'>無分類的商品</option>
+      `;
+      for (let i = 0; i < dropcatamain.length; i++) {
+        print += `
+        <option value="${dropcatamain[i].Id}">${dropcatamain[i].Name}</option>
+        `;
+      }
+      $('.dropmain').append(print)
+    })
+    // 當slect選擇主分類時顯示該分類底下的次分類
+    function mainischg() {
+      let id = $('.dropmain').val();
+      if (id != 'ori' && id != 'unhome') {
+        $.post('api/cata.api.php?cata=catasublist', {
+          id
+        }, function(re) {
+          catasublist = JSON.parse(re);
+          if (catasublist.length > 0) {
+            let print = "<option value='ori'>請選擇分類</option>";
+            for (let i = 0; i < catasublist.length; i++) {
+              print += `
+              <option value='${catasublist[i].Id}'>${catasublist[i].Name}</option>}`;
+              $('.dropsub').html(print);
+            }
+          } else {
+            console.log('np')
+            $('.dropsub').html("<option value='ori'>無次分類</option>");
+          }
+        })
+      } else if (id == 'unhome') {
+        $.post('api/prod.api.php?prod=unhome', function(re) {
+          tablelist = JSON.parse(re);
+          let print = "";
+          for (i = 0; i < tablelist.length; i++) {
+            print += `
+            <tr>
+                <td>
+                  <a class="btn btn-info text-light" onclick=""><em class="fa fa-pencil"></em></a>
+                  <a class="btn btn-danger text-light" onclick=""><em class="fa fa-trash"></em></a>
+                </td>
+                <td>${tablelist[i].Id}</td>
+                <td>${tablelist[i].Name}</td>
+                <td>${tablelist[i].Price}</td>
+                <td>${tablelist[i].NPrice}</td>
+                <td>${tablelist[i].PkPrice}</td>
+                <td>${(tablelist[i].isMainSale==0)?'否':'是'}</td>
+            </tr>
+        `;
+          }
+          $('.dropsub').attr('disabled','disabled');
+          $('tbody').html(print);
+          $('#tprodlist').DataTable();
+        })
+      }
+
+      //sleect 次分類變動時 要去查次分類的資料
+      function subischg() {
+        let id = $('.dropsub').val();
+        console.log(id);
+        if (id != 'ori') {
+          $.get('api/prod.api.php?prod=cataprod', {
+            id
+          }, function(re) {
+            tablelist = JSON.parse(re);
+            let print = "";
+            for (i = 0; i < tablelist.length; i++) {
+              print += `
+            <tr>
+                <td>
+                  <a class="btn btn-info text-light" onclick=""><em class="fa fa-pencil"></em></a>
+                  <a class="btn btn-danger text-light" onclick=""><em class="fa fa-trash"></em></a>
+                </td>
+                <td>${tablelist[i].Id}</td>
+                <td>${tablelist[i].Name}</td>
+                <td>${tablelist[i].Price}</td>
+                <td>${tablelist[i].NPrice}</td>
+                <td>${tablelist[i].PkPrice}</td>
+                <td>${(tablelist[i].isMainSale==0)?'否':'是'}</td>
+            </tr>
+        `;
+            }
+            $('tbody').html(print);
+            $('#tprodlist').DataTable();
+          })
+        }
+      }
+    }
   </script>
 </body>
 

@@ -80,11 +80,15 @@ switch ($_GET['cata']) {
         if (($_POST['floor'] == 0)) {
             $chsql = "DELETE FROM Picker_cate WHERE ParentId=" . $_POST['id'];
             $db->query($chsql);
+            $prodchsql="UPDATE Picker_prod SET CateId=0 WHERE CateId=". $_POST['id'];
+            $db->query($prodchsql);
             $sql = "DELETE FROM Picker_cate WHERE Id=" . $_POST['id'];
             $db->query($sql);
         } elseif ($_POST['floor'] == 1) {
             $sql = "DELETE FROM Picker_cate WHERE Id=" . $_POST['id'];
             $db->query($sql);
+            $prodchsql="UPDATE Picker_prod SET CateId=0 WHERE CateId=". $_POST['id'];
+            $db->query($prodchsql);
         }
         echo "OK";
         break;
