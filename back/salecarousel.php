@@ -19,9 +19,12 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- switch toggle -->
+  <link rel="stylesheet" href="plugins/bootstrap4-toggle/bootstrap4-toggle.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
   <div class="wrapper">
 
     <!-- Navbar -->
@@ -88,7 +91,7 @@
           <!-- add btn -->
           <div>
             <button type="button" class="mb-3 btn btn-primary" data-toggle="modal" data-target=".carouselpicadd">新增圖片</button>
-            <span class="ml-3">可上傳10張照片</span>
+            <span class="ml-3 canupload"></span>
           </div>
           <div>
             <table id="carouselpictable" class="table table-hover">
@@ -101,32 +104,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <a class="btn btn-danger text-light" onclick="picmdy(this)"><em class="fa fa-trash"></em></a>
-                  </td>
-                  <td align="center">
-                    <a class="btn btn-default"><em class="fas fa-arrow-up"></em></a>
-                    <a class="btn btn-default"><em class="fas fa-arrow-down"></em></a>
-                    <span class="imgsort ml-3">1</span>
-                    <input type="hidden" name="id" value="22">
-                  </td>
-                  <td>
-                    <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch />
-                  </td>
-                  <td><img src="../saleimg/carousel1950-1.jpg" /></td>
-                </tr>
+
                 <!-- list -->
               </tbody>
             </table>
           </div>
-
-
         </div>
         <!-- /.container-fluid -->
       </section>
       <!-- /.content -->
     </div>
+
+
+
     <!-- /.content-wrapper -->
     <footer class="main-footer"></footer>
   </div>
@@ -138,51 +128,113 @@
   <script src="../vendor/bootstrap/js/popper.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.js"></script>
   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Bootstrap Switch -->
-  <script src="plugins/bootstrap-switch/js/bootstrap-switch.js"></script>
-  <!-- bs-custom-file-input -->
-  <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- toggle(switch) -->
+  <script src="plugins/bootstrap4-toggle/bootstrap4-toggle.js"></script>
+
   <!-- AdminLTE App -->
   <script src="dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="dist/js/demo.js"></script>
   <script type="text/javascript">
-    $(document).ready(function() {
-      bsCustomFileInput.init();
-    });
+    let carousellist;
     $.get('api/idxsalemanagent.api.php?managent=carousellist', function(re) {
-      console.log(re);
-      let print = `<tr>
+      carousellist = JSON.parse(re);
+      let print = "";
+      for (i = 0; i < carousellist.length; i++) {
+        print += `
+                <tr>
                   <td>
-                    <a class="btn btn-info text-light" onclick="picmdy(this)"><em class="fa fa-trash"></em></a>
+                    <a class="btn btn-danger text-light" onclick="del(this)"><em class="fa fa-trash"></em></a>
+                    <input type="hidden" name="sort" value="${carousellist[i].Sort}">
+                    <input type="hidden" name="id" value="${carousellist[i].UUID}">
                   </td>
                   <td align="center">
-                    <a class="btn btn-default"><em class="fas fa-arrow-up"></em></a>
-                    <a class="btn btn-default"><em class="fas fa-arrow-down"></em></a>
-                    <span class="imgsort ml-3">1</span>
-                    <input type="hidden" name="id" value="22">
+                    <a class="btn btn-default" onclick="sortchg(this,'up')"><em class="fas fa-arrow-up"></em></a>
+                    <a class="btn btn-default" onclick="sortchg(this,'down')"><em class="fas fa-arrow-down"></em></a>
+                    <span class="imgsort ml-3">${i+1}</span>
                   </td>
                   <td>
-                    <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch />
+                    <input type="checkbox" value="${carousellist[i].Sort}" id="isshow"${(carousellist[i].isShow==1)?'checked':''} data-toggle="toggle" data-offstyle="danger" onchange="showChgState(this)">
                   </td>
-                  <td><img src="../saleimg/carousel1950-1.jpg" /></td>
-                </tr>`;
-
+                  <td><img src="upload-carouselpic/${carousellist[i].Name}" /></td>
+                </tr>
+        `;
+        $('tbody').html(print);
+      }
+      $('.canupload').text(`還可上傳${10-carousellist.length}張`)
     })
 
+    // isshow
+    function showChgState(e) {
+      let isshow = e;
+      let status = ($(isshow).is(":checked")) ? 1 : 0; //有點相反的感覺 可能是以改變後的當下給予值
+      let id = $(isshow).parents('tr').find('input:hidden[name=id]').val();
+      $.post('api/idxsalemanagent.api.php?managent=carouselisshow', {
+        id,
+        status
+      }, function(re) {})
+    }
+    // check can upload
     function check(e) {
       let num = $('.carouselpicadd').find('input[type=file]').val();
       return (num.length > 0) ? true : false;
     }
+    // delete
+    function del(e) {
+      var ans = confirm('確定是否要刪除?');
+      if (ans == true) {
+        let id = $(e).parents('tr').find('input:hidden[name=id]').val()
+        $.post('api/idxsalemanagent.api.php?managent=carouseldel', {
+          id
+        }, function(e) {
+          if (e == "OK") location.reload();
+        })
+      }
+    }
+    // 順序
+    let prv, next;
+
+    function sortchg(who, func) {
+
+      let id = $(who).parents('tr').find('input:hidden[name=id]').val();
+      let sort = $(who).parents('tr').find('input:hidden[name=sort]').val();
+      if (func == "up") {
+        prv = $(who).parents('tr').prev();
+        if (prv.length != 0) {
+          // console.log('yespapa');
+          let previd = $(prv).find('input:hidden[name=id]').val();
+          let prevsort = $(prv).find('input:hidden[name=sort]').val();
+          $.post('api/idxsalemanagent.api.php?managent=carouselshortup', {
+            id,
+            sort,
+            previd,
+            prevsort
+          }, function(e) {
+            if (e == "OK") location.reload();
+          })
+        }
+      } else if (func == "down") {
+        next = $(who).parents('tr').next();
+        if (next.length != 0) {
+          let nextid = $(next).find('input:hidden[name=id]').val();
+          let nextsort = $(next).find('input:hidden[name=sort]').val();
+          $.post('api/idxsalemanagent.api.php?managent=carouselshortdown', {
+            id,
+            sort,
+            nextid,
+            nextsort
+          }, function(e) {
+            if (e == "OK") location.reload();
+          })
+        }
+      }
+      // console.log(id);
 
 
 
-
-    $("input[data-bootstrap-switch]").each(function() {
-      $(this).bootstrapSwitch("state", $(this).prop("checked"));
-    });
-    $("input[name='my-checkbox2']").val()
+    }
   </script>
+
 
 
 

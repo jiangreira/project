@@ -20,6 +20,8 @@ switch ($_GET['prod']) {
             // 記得壓縮---
             $sql = "INSERT INTO picker_prod (Id,Name,CateId,CostPrice,Price,NPrice,PkPrice,ShortDesc,Spec,ProdDesc,Credate,Upddate) 
             VALUES (null,'" . $Name . "'," . $CateId . "," . $CostPrice . "," . $Price . "," . $NPrice . "," . $PkPrice . ",'" . $ShortDesc . "','" . $prodspec . "','" . $ProdDesc . "',NOW(),NOW())";
+            
+            print_r($sql);
             $db->query($sql);
             $returnid = $db->lastInsertId();
             // 如果有圖片的話再進入這裡

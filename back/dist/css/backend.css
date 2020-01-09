@@ -17,31 +17,34 @@
 #carouselpictable tr th:nth-child(3),
 #carouselpictable tr td:nth-child(1),
 #carouselpictable tr td:nth-child(2),
-#carouselpictable tr td:nth-child(3){
+#carouselpictable tr td:nth-child(3) {
   text-align: center;
 }
-#carouselpictable tbody tr td img{
-  height:100px !important; 
+#carouselpictable tbody tr td img {
+  height: 100px !important;
 }
 #carouselpictable thead tr th:nth-child(1),
-#carouselpictable tbody tr td:nth-child(1){
-    max-width: 75px ;
-  }
-#carouselpictable tbody tr td{
+#carouselpictable tbody tr td:nth-child(1) {
+  max-width: 75px;
+}
+#carouselpictable tbody tr td {
   line-height: 100px;
-  }
+}
+#carouselpictable tbody tr td .pos {
+  /* text-align:center !important; 
+	vertical-align:middle !important; */
+}
 
 @media (max-width: 768px) {
   #carouselpictable thead tr th:nth-child(1),
   #carouselpictable thead tr td:nth-child(1) {
-  max-width: 100px !important;
+    max-width: 100px !important;
   }
   #carouselpictable thead tr th:nth-child(2),
   #carouselpictable thead tr td:nth-child(2) {
-  min-width: 175px !important;
+    min-width: 175px !important;
   }
 }
-
 
 /* prodadd */
 .tablespec {
@@ -57,7 +60,7 @@
   margin-top: 20px;
 }
 .upload {
-  width:100%;
+  width: 100%;
   margin: 50px 0px;
 }
 
@@ -67,7 +70,7 @@
   position: relative;
   width: 100px;
   height: 100px;
-  background: url('../img/add-file.png') no-repeat;
+  background: url("../img/add-file.png") no-repeat;
   background-size: cover;
   text-align: center;
   cursor: pointer;
@@ -113,9 +116,8 @@
   z-index: 0;
 }
 
-
 /* catalog */
-.catalist{
+.catalist {
   overflow: auto;
 }
 #cataloglist thead tr th {
@@ -129,13 +131,12 @@
   }
 }
 
-.cataadd{
+.cataadd {
   margin: 15px 0px;
 }
 
-
 /* prod */
-.dropdown2{
+.dropdown2 {
   width: 250px;
   height: calc(2.25rem + 2px);
   font-size: 1rem;
@@ -149,7 +150,7 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.dropdown2:disabled{
+.dropdown2:disabled {
   color: #6c757d;
-    background-color: #e9eceF;
+  background-color: #e9ecef;
 }

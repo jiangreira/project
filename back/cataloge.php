@@ -317,7 +317,7 @@ require_once('library.php')
       var subid = $(e).parents("tr").children('td').eq(1).find('input[name=catasubid]').val();
       var floor = $(e).parents("tr").children('td').eq(1).find('input[name=floor]').val();
       if (floor == 0 && mainid.length > 0) {
-        var ans = confirm('是要要刪除主分類?刪除主分類會連同底下次分類一起刪除');
+        var ans = confirm('是否要刪除主分類?刪除主分類會連同底下次分類一起刪除');
         if (ans == true) {
           var id = mainid;
           $.post('api/cata.api.php?cata=del', {id,floor}).done(function(e) {
