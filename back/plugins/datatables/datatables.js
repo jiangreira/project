@@ -12125,7 +12125,7 @@ return jQuery;
 			// Backwards compatibility - if there is no sEmptyTable given, then use the same as
 			// sZeroRecords - assuming that is given.
 			if ( ! lang.sEmptyTable && zeroRecords &&
-				defaults.sEmptyTable === "No data available in table" )
+				defaults.sEmptyTable === "查無資料" )
 			{
 				_fnMap( lang, lang, 'sZeroRecords', 'sEmptyTable' );
 			}
@@ -21790,7 +21790,7 @@ return jQuery;
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "<i class='fas fa-angle-right'></i>",
 	
 	
 				/**
@@ -21813,7 +21813,7 @@ return jQuery;
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "<i class='fas fa-angle-left'></i>"
 			},
 	
 			/**
@@ -21836,7 +21836,7 @@ return jQuery;
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "查無資料",
 	
 	
 			/**
@@ -21868,7 +21868,7 @@ return jQuery;
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "顯示 _START_ to _END_ 筆,共 _TOTAL_ 筆",
 	
 	
 			/**
@@ -21889,7 +21889,7 @@ return jQuery;
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "顯示 0 to 0 筆,共 0 筆",
 	
 	
 			/**
@@ -22029,7 +22029,7 @@ return jQuery;
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "顯示 _MENU_",
 	
 	
 			/**
@@ -22109,7 +22109,7 @@ return jQuery;
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "搜尋:",
 	
 	
 			/**

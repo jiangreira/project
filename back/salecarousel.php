@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>AdminLTE 3 | General Form Elements</title>
+  <title>首頁設定</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css" />
@@ -57,8 +57,8 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <!-- modal位置 -->
-          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <!-- add -->
+          <div class="modal fade carouselpicadd" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
@@ -68,40 +68,16 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form role="form" enctype="multipart/form-data">
-                    <p>圖片長1900*寬500</p>
+                  <form role="form" method="POST" action="api/idxsalemanagent.api.php?managent=carouselpicadd" enctype="multipart/form-data" onsubmit="return check()">
                     <div class="card-body">
                       <div class="form-group">
-                        <label for="formcarousel">圖片1</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" id="formcarousel" name="idxcarousel[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
-                            <label class="custom-file-label" for="formcarousel">選擇檔案</label>
-                          </div>
+                        <p>圖片長1900*寬500</p>
+                        <div class="custom-file">
+                          <input type="file" name="idxcarousel" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
+                          <label class="custom-file-label" for="formcarousel">選擇檔案</label>
                         </div>
+                        <button type="submit" class="btn btn-primary mt-3">新增</button>
                       </div>
-                      <div class="form-group">
-                        <label for="formcarousel">圖片2</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" id="formcarousel" name="idxcarousel[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
-                            <label class="custom-file-label" for="formcarousel">選擇檔案</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="formcarousel">圖片3</label>
-                        <div class="input-group">
-                          <div class="custom-file">
-                            <input type="file" id="formcarousel" name="idxcarousel[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
-                            <label class="custom-file-label" for="formcarousel">選擇檔案</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -109,77 +85,43 @@
             </div>
           </div>
           <hr />
-          <div id="carouseltable" class="panel panel-default panel-table">
-            <div class="panel-heading mb-3">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">新增圖片</button>
-            </div>
-            <div class="panel-body">
-              <table class="table table-bordered table-list table-hover">
-                <thead>
-                  <tr>
-                    <th><em class="fa fa-cog"></em></th>
-                    <th>順序</th>
-                    <th>顯示</th>
-                    <th>圖片</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>
-                      <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                      <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                    </td>
-                    <td align="center">
-                      <a class="btn btn-default"><em class="fas fa-arrow-up"></em></a>
-                      <a class="btn btn-default"><em class="fas fa-arrow-down"></em></a>
-                    </td>
-                    <td>
-                      <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch />
-                    </td>
-                    <td><img src="../saleimg/carousel1950-1.jpg" /></td>
-                  </tr>
-                  <tr>
-                    <td align="center">
-                      <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                      <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                    </td>
-                    <td align="center">
-                      <a class="btn btn-default"><em class="fas fa-arrow-up"></em></a>
-                      <a class="btn btn-default"><em class="fas fa-arrow-down"></em></a>
-                    </td>
-                    <td><input type="checkbox" name="my-checkbox2" checked data-bootstrap-switch /></td>
-                    <td><img src="../saleimg/carousel1950-3.jpg" /></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="panel-footer">
-              <div class="row">
-                <!-- 分頁 -->
-                <div class="col col-xs-4">Page 1 of 5</div>
-                <div class="col col-xs-8  ">
-                  <ul class="pagination pull-right">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <!-- add btn -->
+          <div>
+            <button type="button" class="mb-3 btn btn-primary" data-toggle="modal" data-target=".carouselpicadd">新增圖片</button>
+            <span class="ml-3">可上傳10張照片</span>
           </div>
+          <div>
+            <table id="carouselpictable" class="table table-hover">
+              <thead>
+                <tr>
+                  <th><em class="fa fa-cog"></em></th>
+                  <th>順序</th>
+                  <th>顯示</th>
+                  <th>圖片</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <a class="btn btn-danger text-light" onclick="picmdy(this)"><em class="fa fa-trash"></em></a>
+                  </td>
+                  <td align="center">
+                    <a class="btn btn-default"><em class="fas fa-arrow-up"></em></a>
+                    <a class="btn btn-default"><em class="fas fa-arrow-down"></em></a>
+                    <span class="imgsort ml-3">1</span>
+                    <input type="hidden" name="id" value="22">
+                  </td>
+                  <td>
+                    <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch />
+                  </td>
+                  <td><img src="../saleimg/carousel1950-1.jpg" /></td>
+                </tr>
+                <!-- list -->
+              </tbody>
+            </table>
+          </div>
+
+
         </div>
         <!-- /.container-fluid -->
       </section>
@@ -208,11 +150,45 @@
     $(document).ready(function() {
       bsCustomFileInput.init();
     });
+    $.get('api/idxsalemanagent.api.php?managent=carousellist', function(re) {
+      console.log(re);
+      let print = `<tr>
+                  <td>
+                    <a class="btn btn-info text-light" onclick="picmdy(this)"><em class="fa fa-trash"></em></a>
+                  </td>
+                  <td align="center">
+                    <a class="btn btn-default"><em class="fas fa-arrow-up"></em></a>
+                    <a class="btn btn-default"><em class="fas fa-arrow-down"></em></a>
+                    <span class="imgsort ml-3">1</span>
+                    <input type="hidden" name="id" value="22">
+                  </td>
+                  <td>
+                    <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch />
+                  </td>
+                  <td><img src="../saleimg/carousel1950-1.jpg" /></td>
+                </tr>`;
+
+    })
+
+    function check(e) {
+      let num = $('.carouselpicadd').find('input[type=file]').val();
+      return (num.length > 0) ? true : false;
+    }
+
+
+
+
     $("input[data-bootstrap-switch]").each(function() {
       $(this).bootstrapSwitch("state", $(this).prop("checked"));
     });
     $("input[name='my-checkbox2']").val()
   </script>
+
+
+
+
+
+
 </body>
 
 </html>
