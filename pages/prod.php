@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- DataTable -->
-  <link rel="stylesheet" href="plugsin/DataTables/datatables.css">
+  <link rel="stylesheet" href="../plugsin/DataTables/datatables.css">
   <!-- custom  -->
   <link rel="stylesheet" href="../plugsin/css/admin.css">
   <link rel="stylesheet" href="../plugsin/css/backend.css">
@@ -61,12 +61,8 @@
         <div class="container-fluid">
           <a href="prodadd.php" type="button" class="btn btn-primary text-light">新增商品</a>
           <div class="form-group mt-3 mb-3 prodlistselect">
-            <form calss="">
-              <select name="maincate" class="dropdown2 dropmain" onchange="mainischg()"></select>
-              <select name="subcate" class="dropdown2 dropsub" onchange="subischg()">
-                <option value="ori">請先選擇主分類</option>
-              </select>
-            </form>
+            <select name="maincate" class="dropdown2 dropmain" onchange="mainischg()"></select>
+            <select name="subcate" class="dropdown2 dropsub" onchange="subischg()"></select>
           </div>
           <hr>
           <table class="table table-hover t-prodlist" id="tprodlist">
@@ -147,7 +143,7 @@
         `;
       }
       $('.dropmain').append(print)
-      // $('.dropsub').attr('disabled','disabled');//次分類disable
+      $('.dropsub').attr('disabled','disabled');//次分類disable
     })
     // 當slect選擇主分類時顯示該分類底下的次分類
     function mainischg() {
@@ -163,13 +159,14 @@
               print += `
               <option value='${catasublist[i].Id}'>${catasublist[i].Name}</option>`;
 
-              // $('.dropsub').removeAttr('disabled','');
+              $('.dropsub').removeAttr('disabled','');
             }
             $('.dropsub').html(print);
           } else {
             $('.dropsub').html("<option value='ori'>無次分類</option>");
-            // $('.dropsub').attr('disabled','disabled');//次分類disable
+            $('.dropsub').attr('disabled','disabled');//次分類disable
           }
+          $('#tprodlist').DataTable();
         })
       } else if (id == 'unhome') {
         $.post('../api/prod.api.php?prod=unhome', function(re) {
@@ -191,19 +188,18 @@
             </tr>
         `;
           }
-          // $('.dropsub').attr('disabled','disabled');//次分類disable
+          $('.dropsub').attr('disabled','disabled');//次分類disable
           $('.dropsub').html("<option value='ori'>-</option>");
           $('tbody').html(print);
           $('#tprodlist').DataTable();
         })
-      }
-
-      //sleect 次分類變動時 要去查次分類的資料
-      function subischg() {
+      }        
+    }
+    //sleect 次分類變動時 要去查次分類的資料
+    function subischg () {
         let id = $('.dropsub').val();
-        console.log(id);
         if (id != 'ori') {
-          $.get('api/prod.api.php?prod=cataprod', {
+          $.get('../api/prod.api.php?prod=cataprod', {
             id
           }, function(re) {
             tablelist = JSON.parse(re);
@@ -228,8 +224,7 @@
             $('#tprodlist').DataTable();
           })
         }
-      }
-    }
+      }   
   </script>
 </body>
 
