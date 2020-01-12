@@ -18,6 +18,16 @@ switch($_GET['idx']){
         echo json_encode($list);
 
     break;
+    case'carouselpic':
+        $sql = "SELECT Name FROM picker_carouselpic ORDER BY Sort Asc";
+        $rows = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($rows);
+    break;
+    case'proddetail':
+        $re=select('picker_prod', 'id=' . $_GET['id']);
+        $rows= $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        print_r($rows);
+    break;
 }
 
 

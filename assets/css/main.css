@@ -2694,12 +2694,14 @@ button:hover {
   position: absolute;
   width: 30px;
 }
-.info-panel .product-size {
+.info-panel .product-size,
+.info-panel .product-color {
   width: 100%;
   display: inline-block;
   margin-bottom: 25px;
 }
-.info-panel .product-size span {
+.info-panel .product-size span,
+.info-panel .product-color span {
   padding: 6px 12px;
   border-radius: 2px;
   float: left;
@@ -2710,8 +2712,12 @@ button:hover {
   font-weight: 700;
   cursor: pointer;
 }
-.info-panel .product-size span.active {
+.info-panel .product-size span.active{
   background: #3f51b5;
+  color: #fff;
+}
+.info-panel .product-color span.active {
+  background: #21b670;
   color: #fff;
 }
 .info-panel .color-list {
@@ -2880,7 +2886,7 @@ button:hover {
   color: #666;
   display: block;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 300;
   height: 45px;
   line-height: 45px;
   padding: 0 30px;

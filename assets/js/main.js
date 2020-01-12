@@ -110,19 +110,19 @@ $(window).on('load',function() {
 /* ==========================================================================
    New Products Owl Carousel
    ========================================================================== */
-  $("#new-products").owlCarousel({
-      navigation: true,
-      pagination: false,
-      slideSpeed: 1000,
-      stopOnHover: true,
-      autoPlay: true,
-      items: 4,
-      itemsDesktopSmall: [1024, 2],
-      itemsTablet: [600, 1],
-      itemsMobile: [479, 1]
-  });
-  $('#new-products').find('.owl-prev').html('<i class="fa fa-angle-left"></i>');
-  $('#new-products').find('.owl-next').html('<i class="fa fa-angle-right"></i>');
+  // $("#new-products").owlCarousel({
+  //     navigation: true,
+  //     pagination: false,
+  //     slideSpeed: 1000,
+  //     stopOnHover: true,
+  //     autoPlay: true,
+  //     items: 4,
+  //     itemsDesktopSmall: [1024, 2],
+  //     itemsTablet: [600, 1],
+  //     itemsMobile: [479, 1]
+  // });
+  // $('#new-products').find('.owl-prev').html('<i class="fa fa-angle-left"></i>');
+  // $('#new-products').find('.owl-next').html('<i class="fa fa-angle-right"></i>');
 
 /* Client Owl Carousel
 ========================================================*/
@@ -307,13 +307,5 @@ $(window).on('load', function() {
       ],
   });
 
- /*  Select Color Active
-  ========================================================*/
-  $("div.color-list .color").click(function(e){
-    e.preventDefault();
-    $(this).parent().parent().find(".color").removeClass("active");
-    $(this).addClass("active");
-  })
-  
-
+ 
 }(jQuery));
