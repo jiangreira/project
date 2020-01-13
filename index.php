@@ -45,334 +45,9 @@
 
 <body>
   <!-- logo menu -->
-  <div class="header">
-    <nav class="navbar navbar-default" data-spy="affix" data-offset-top="50">
-      <div class="container">
-        <div class="row">
-          <div class="navbar-header">
-            <!-- Stat Toggle Nav Link For Mobiles -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="index.php">
-              <img src="assets/img/logo.png" alt="">
-            </a>
-          </div>
-          <div class="navbar-collapse collapse shop-cart">
-            <!-- Start Navigation List -->
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="#">分類<span class="caret"></span></a>
-                <div class="dropdown mega-menu megamenu1">
-                  <div class="row">
-                    <div class="col-sm-3 col-xs-12">
-                      <ul class="menulinks">
-                        <li class="maga-menu-title">
-                          <a href="#">Men</a>
-                        </li>
-                        <li><a href="category.html">Clothing</a></li>
-                        <li><a href="category.html">Handbags</a></li>
-                        <li><a href="category.html">Maternity</a></li>
-                        <li><a href="category.html">Jewelry</a></li>
-                        <li><a href="category.html">Scarves</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-3 col-xs-12">
-                      <ul class="menulinks">
-                        <li class="maga-menu-title">
-                          <a href="#">Women</a>
-                        </li>
-                        <li><a href="category.html">Handbags</a></li>
-                        <li><a href="category.html">Jewelry</a></li>
-                        <li><a href="category.html">Clothing</a></li>
-                        <li><a href="category.html">Watches</a></li>
-                        <li><a href="category.html">Hats</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-5 col-sm-offset-1 col-xs-12">
-                      <span class="block-last">
-                        <img src="assets/img/block_menu.jpg" alt="">
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <a href="#">Shop <span class="caret"></span></a>
-                <div class="dropdown mega-menu megamenu2">
-                  <div class="row">
-                    <div class="col-sm-6 col-xs-12">
-                      <ul class="menulinks">
-                        <li class="maga-menu-title">
-                          <a href="#">Normal Shop Pages</a>
-                        </li>
-                        <li><a href="category.html">Single Category</a></li>
-                        <li><a href="product-details.html">Product Details</a></li>
-                        <li><a href="shopping-cart.html">Cart Page</a></li>
-                        <li><a href="checkout.html">Checkout Page</a></li>
-                        <li><a href="single-shop.html">Seller's Store</a></li>
-                        <li><a href="shop-grid.html">Shop Grid Sidebar</a></li>
-                        <li><a href="shop-list.html">Shop List Sidebar</a></li>
-                        <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                        <li><a href="order.html">Order Track</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-sm-6 col-xs-12">
-                      <ul class="menulinks">
-                        <li class="maga-menu-title">
-                          <a href="#">Multi-vendor Pages</a>
-                        </li>
-                        <li><a href="submission.html">Product Submission</a></li>
-                        <li><a href="single-shop.html">Seller Store Page</a></li>
-                        <li><a href="edit-profile.html">Seller Account</a></li>
-                        <li><a href="login.html">Log In</a></li>
-                        <li><a href="shop.html">Search</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <a href="#">Pages <span class="caret"></span></a>
-                <ul class="dropdown">
-                  <li>
-                    <a href="about.html">
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="services.html">
-                      Services
-                    </a>
-                  </li>
-                  <li>
-                    <a href="contact.html">
-                      Contact Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="product-details.html">
-                      Product Details
-                    </a>
-                  </li>
-                  <li>
-                    <a href="team.html">
-                      Team Member
-                    </a>
-                  </li>
-                  <li>
-                    <a href="checkout.html">
-                      Checkout
-                    </a>
-                  </li>
-                  <li>
-                    <a href="compare.html">
-                      Compare
-                    </a>
-                  </li>
-                  <li>
-                    <a href="shopping-cart.html">
-                      Shopping cart
-                    </a>
-                  </li>
-                  <li>
-                    <a href="faq.html">
-                      FAQs
-                    </a>
-                  </li>
-                  <li>
-                    <a href="wishlist.html">
-                      Wishlist
-                    </a>
-                  </li>
-                  <li>
-                    <a href="404.html">
-                      404 Error
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="login-form.html" class="cart-icon cart-btn"><i class="icon-user"></i></a>
-              </li>
-              <li><a class="cart-icon cart-btn" href="wishlist.html"><span class="icon-heart"></span></a></li>
-              <li>
-                <a href="#" class="cart-icon cart-btn"><i class="icon-basket"></i></a>
-                <div class="cart-box">
-                  <div class="popup-container">
-                    <div class="cart-entry">
-                      <a href="#" class="image">
-                        <img src="assets/img/products/product-menu-1.jpg" alt="">
-                      </a>
-                      <div class="content">
-                        <a href="#" class="title">Pullover Batwing</a>
-                        <p class="quantity">Quantity: 3</p>
-                        <span class="price">$45.00</span>
-                      </div>
-                      <div class="button-x">
-                        <i class="icon-close"></i>
-                      </div>
-                    </div>
-                    <div class="cart-entry">
-                      <a href="#" class="image">
-                        <img src="assets/img/products/product-menu-2.jpg" alt="">
-                      </a>
-                      <div class="content">
-                        <a href="#" class="title">Pullover Batwing</a>
-                        <p class="quantity">Quantity: 3</p>
-                        <span class="price">$90.00</span>
-                      </div>
-                      <div class="button-x">
-                        <i class="icon-close"></i>
-                      </div>
-                    </div>
-                    <div class="summary">
-                      <div class="subtotal">Sub Total</div>
-                      <div class="price-s">$210.5</div>
-                    </div>
-                    <div class="cart-buttons">
-                      <a href="#" class="btn btn-border-2">View Cart</a>
-                      <a href="#" class="btn btn-common">Checkout</a>
-                      <div class="clear"></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            <!-- End Navigation List -->
-          </div>
-        </div>
-      </div>
-      <!-- End Header Logo & Naviagtion -->
-
-      <!-- Mobile Menu Start -->
-      <ul class="mobile-menu">
-        <li>
-          <a class="active" href="index.php">
-            Home
-          </a>
-          <ul class="dropdown">
-            <li>
-              <a class="active" href="index.php">Home V1</a>
-            </li>
-            <li>
-              <a href="index-2.html">Home V2</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="about.html">About</a>
-        </li>
-        <li>
-          <a href="#">Catalog</a>
-          <ul class="dropdown menulinks">
-            <li class="maga-menu-title">
-              <a href="#">Men</a>
-            </li>
-            <li><a href="category.html">Clothing</a></li>
-            <li><a href="category.html">Handbags</a></li>
-            <li><a href="category.html">Maternity</a></li>
-            <li><a href="category.html">Jewelry</a></li>
-            <li><a href="category.html">Scarves</a></li>
-            <li class="maga-menu-title">
-              <a href="#">Women</a>
-            </li>
-            <li><a href="category.html">Handbags</a></li>
-            <li><a href="category.html">Jewelry</a></li>
-            <li><a href="category.html">Clothing</a></li>
-            <li><a href="category.html">Watches</a></li>
-            <li><a href="category.html">Hats</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Shop</a>
-          <ul class="menulinks">
-            <li class="maga-menu-title">
-              <a href="#">Normal Shop Pages</a>
-            </li>
-            <li><a href="category.html">Single Category</a></li>
-            <li><a href="product-details.html">Product Details</a></li>
-            <li><a href="shopping-cart.html">Cart Page</a></li>
-            <li><a href="checkout.html">Checkout Page</a></li>
-            <li><a href="single-shop.html">Seller's Store</a></li>
-            <li><a href="shop-grid.html">Shop Grid Sidebar</a></li>
-            <li><a href="shop-list.html">Shop List Sidebar</a></li>
-            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-            <li><a href="order.html">Order Track</a></li>
-            <li class="maga-menu-title">
-              <a href="#">Multi-vendor Pages</a>
-            </li>
-            <li><a href="submission.html">Product Submission</a></li>
-            <li><a href="single-shop.html">Seller Store Page</a></li>
-            <li><a href="edit-profile.html">Seller Account</a></li>
-            <li><a href="login.html">Log In</a></li>
-            <li><a href="shop.html">Search</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Pages</a>
-          <ul class="dropdown">
-            <li>
-              <a href="about.html">About Us</a>
-            </li>
-            <li>
-              <a href="services.html">Services</a>
-            </li>
-            <li>
-              <a href="contact.html">Contact Us</a>
-            </li>
-            <li>
-              <a href="product-details.html">Product Details</a>
-            </li>
-            <li>
-              <a href="team.html">Team Member</a>
-            </li>
-            <li>
-              <a href="checkout.html">Checkout</a>
-            </li>
-            <li>
-              <a href="compare.html">Compare</a>
-            </li>
-            <li>
-              <a href="shopping-cart.html">Shopping cart</a>
-            </li>
-            <li>
-              <a href="faq.html">FAQs</a>
-            </li>
-            <li>
-              <a href="wishlist.html">Wishlist</a>
-            </li>
-            <li>
-              <a href="404.html">404 Error</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Blog</a>
-          <ul class="dropdown">
-            <li>
-              <a href="blog.html">Blog Right Sidebar</a>
-            </li>
-            <li>
-              <a href="blog-left-sidebar.html">Blog Left Sidebar</a>
-            </li>
-            <li>
-              <a href="blog-full-width.html">Blog Full Width</a>
-            </li>
-            <li>
-              <a href="blog-details.html">Blog Details</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="contact.html">Contact</a>
-        </li>
-      </ul>
-      <!-- Mobile Menu End -->
-    </nav>
-  </div>
+  <?php
+  include('idx_nav.php');
+  ?>
 
   <!-- Main Slider Section -->
   <section id="slider">
@@ -527,45 +202,9 @@
   </section>
   <!-- New Products Section End -->
 
-  <!-- Footer Start -->
-  <footer class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="contact-us">
-            <h3 class="widget-title">Contact Us</h3>
-            <ul class="contact-list">
-              <li><i class="icon-home"></i><span>888 6th 10001 Oakwood Avenue, New York City, NY</span></li>
-              <li><i class="icon-call-out"></i> <span>212-631-5135 <br> 212-631-5105</span></li>
-              <li><i class="icon-envelope"></i> <span>sales@emart.com support@emart.com</span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <h3 class="widget-title">Useful Links</h3>
-          <ul>
-            <li><a href="login.html">My Account</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="wishlist.html">Wishlist</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- Footer End -->
-
-  <!-- Copyright Start -->
-  <div id="copyright">
-    <div class="container text-center">
-      <p>All copyrights reserved &copy; 2017 - Designed & Developed by</p>
-    </div>
-  </div>
-  <!-- Copyright End -->
-
-  <!-- Go To Top Link -->
-  <a href="#" class="back-to-top">
-    <i class="icon-arrow-up"></i>
-  </a>
+  <?php
+  include('idx_footer.php');
+  ?>
 
   <!-- All modals added here for the demo -->
   <div class="md-modal md-effect-3" id="modal-3">
@@ -672,8 +311,6 @@
 
   <!-- All js here -->
   <script type="text/javascript" src="assets/js/jquery-min.js"></script>
-  <script src="plugsin/bootstrap/popper.min.js"></script>
-  <script src="plugsin/bootstrap/bootstrap.js"></script>
   <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="assets/js/bootstrap-select.min.js"></script>
   <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
@@ -775,9 +412,9 @@
     let carouselpic;
     $.get('api/idx.api.php?idx=carouselpic', function(re) {
       carouselpic = JSON.parse(re);
-      let print="";
-      for(i=0;i<carouselpic.length;i++){
-        print+=`
+      let print = "";
+      for (i = 0; i < carouselpic.length; i++) {
+        print += `
         <li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-thumb="upload/carouselpic/${carouselpic[i].Name}" data-delay="4000">
             <img src="upload/carouselpic/${carouselpic[i].Name}"  data-lazyload="upload/carouselpic/${carouselpic[i].Name}" data-bgposition="top" data-duration="12000" data-ease="Power0.easeInOut" data-bgfit="115" data-bgfitend="100" data-bgpositionend="right">
           </li>
@@ -785,60 +422,60 @@
       }
       $('.tp-banner').html(`<ul>${print}</ul>`);
       $('.tp-banner').show().revolution({
-      dottedOverlay: "none",
-      delay: 9000,
-      startwidth: 1170,
-      startheight: 540,
-      hideThumbs: 200,
-      thumbWidth: 100,
-      thumbHeight: 50,
-      thumbAmount: 5,
-      navigationType: "bullet",
-      navigationArrows: "solo",
-      navigationStyle: "preview4",
-      touchenabled: "on",
-      onHoverStop: "on",
-      swipe_velocity: 0.7,
-      swipe_min_touches: 1,
-      swipe_max_touches: 1,
-      drag_block_vertical: false,
-      parallax: "mouse",
-      parallaxBgFreeze: "on",
-      parallaxLevels: [7, 4, 3, 2, 5, 4, 3, 2, 1, 0],
-      keyboardNavigation: "off",
-      navigationHAlign: "center",
-      navigationVAlign: "bottom",
-      navigationHOffset: 0,
-      navigationVOffset: 20,
-      soloArrowLeftHalign: "left",
-      soloArrowLeftValign: "center",
-      soloArrowLeftHOffset: 20,
-      soloArrowLeftVOffset: 0,
-      soloArrowRightHalign: "right",
-      soloArrowRightValign: "center",
-      soloArrowRightHOffset: 20,
-      soloArrowRightVOffset: 0,
-      shadow: 0,
-      fullWidth: "on",
-      fullScreen: "off",
-      spinner: "spinner1",
-      stopLoop: "off",
-      stopAfterLoops: -1,
-      stopAtSlide: -1,
-      shuffle: "off",
-      autoHeight: "off",
-      forceFullWidth: "off",
-      hideThumbsOnMobile: "off",
-      hideNavDelayOnMobile: 1500,
-      hideBulletsOnMobile: "off",
-      hideArrowsOnMobile: "off",
-      hideThumbsUnderResolution: 0,
-      hideSliderAtLimit: 0,
-      hideCaptionAtLimit: 0,
-      hideAllCaptionAtLilmit: 0,
-      startWithSlide: 0,
-      fullScreenOffsetContainer: ""
-    }); 
+        dottedOverlay: "none",
+        delay: 9000,
+        startwidth: 1170,
+        startheight: 540,
+        hideThumbs: 200,
+        thumbWidth: 100,
+        thumbHeight: 50,
+        thumbAmount: 5,
+        navigationType: "bullet",
+        navigationArrows: "solo",
+        navigationStyle: "preview4",
+        touchenabled: "on",
+        onHoverStop: "on",
+        swipe_velocity: 0.7,
+        swipe_min_touches: 1,
+        swipe_max_touches: 1,
+        drag_block_vertical: false,
+        parallax: "mouse",
+        parallaxBgFreeze: "on",
+        parallaxLevels: [7, 4, 3, 2, 5, 4, 3, 2, 1, 0],
+        keyboardNavigation: "off",
+        navigationHAlign: "center",
+        navigationVAlign: "bottom",
+        navigationHOffset: 0,
+        navigationVOffset: 20,
+        soloArrowLeftHalign: "left",
+        soloArrowLeftValign: "center",
+        soloArrowLeftHOffset: 20,
+        soloArrowLeftVOffset: 0,
+        soloArrowRightHalign: "right",
+        soloArrowRightValign: "center",
+        soloArrowRightHOffset: 20,
+        soloArrowRightVOffset: 0,
+        shadow: 0,
+        fullWidth: "on",
+        fullScreen: "off",
+        spinner: "spinner1",
+        stopLoop: "off",
+        stopAfterLoops: -1,
+        stopAtSlide: -1,
+        shuffle: "off",
+        autoHeight: "off",
+        forceFullWidth: "off",
+        hideThumbsOnMobile: "off",
+        hideNavDelayOnMobile: 1500,
+        hideBulletsOnMobile: "off",
+        hideArrowsOnMobile: "off",
+        hideThumbsUnderResolution: 0,
+        hideSliderAtLimit: 0,
+        hideCaptionAtLimit: 0,
+        hideAllCaptionAtLilmit: 0,
+        startWithSlide: 0,
+        fullScreenOffsetContainer: ""
+      });
     })
   </script>
 

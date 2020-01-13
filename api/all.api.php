@@ -29,6 +29,11 @@ switch ($_GET['do']) {
                 echo "<script>alert('註冊成功!請再重新登入!');" . jlo("../login.php") . "</script>";
             } else echo "<script>alert('註冊失敗!請再重新登入!');" . jlo("../login.php") . "</script>";
         }
-
         break;
+        case'cataprodlist':
+            if($_GET['id']) $cateid=$_GET['id'];
+            select('picker_prod','CateId='.$cateid);
+            
+        break;
+
 }

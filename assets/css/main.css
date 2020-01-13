@@ -587,7 +587,7 @@ ul.social-list li a i {
 }
 .navbar-default .navbar-nav .dropdown {
   position: absolute;
-  left: 0;
+  right: 0;
   margin-top: 25px;
   border-top: 1px solid #3f51b5;
   top: 100%;
@@ -1745,6 +1745,7 @@ button {
   opacity: 1;
 }
 footer {
+  padding:30px 0px;
   width: 100%;
   background: #2d2d2d;
 }
@@ -1801,7 +1802,7 @@ footer .block-subscribe .form-control {
 }
 .widget-title {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 300;
   color: #fff;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -2661,7 +2662,13 @@ button:hover {
   margin-bottom: 20px;
   width: 100%;
 }
-.info-panel .price-ratting .price {
+.info-panel .price-ratting2 {
+  float: left;
+  margin: 20px 0px;
+  width: 100%;
+}
+.info-panel .price-ratting .price ,
+.info-panel .price-ratting .price2 {
   color: #7a7a7a;
   font-size: 20px;
   font-weight: 700;
@@ -3836,4 +3843,7 @@ fieldset[disabled] .btn {
 }
 .bootstrap-select > .dropdown-toggle {
   padding: 16px 18px 10px;
+}
+.tb{
+  margin:10px 0;
 }

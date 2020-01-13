@@ -28,6 +28,26 @@ switch($_GET['idx']){
         $rows= $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         print_r($rows);
     break;
+    case'catalist':
+        $catafloor0=select('picker_cate','Floor=0');
+        foreach($catafloor0 as $row){
+            $Floor[]=array(
+                'Id'=>$row['Id'],
+                'Name'=>$row['Name'],
+            );
+        }
+        $catafloor1=select('picker_cate','Floor=1');
+        foreach($catafloor1 as $row){
+            $Sub[]=array(
+                'Id'=>$row['Id'],
+                'Name'=>$row['Name'],
+                'ParentId'=>$row['ParentId']
+            ); 
+        }
+        $cata=array('Floor'=>$Floor,'Sub'=>$Sub);
+        
+        echo json_encode($cata);
+    break;
 }
 
 
