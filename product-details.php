@@ -1,26 +1,27 @@
 <!-- @format -->
 <?php
-include('api/library.php');
-if(empty($_GET)) {
+require_once('api/library.php');
+if (empty($_GET)) {
   plo('index.php');
 }
+// $sql="SELECT*FROM picker_prod WHERE id=".$_GET['id'];
+$rows = $db->query("SELECT*FROM picker_prod WHERE id=" . $_GET['id'])->fetchAll();
+// $rows = select2('picker_prod', 'Id=' . $_GET['id']);
+if (empty($rows)) plo('index.php');
 
-$rows = select('picker_prod', 'id=' . $_GET['id']);
-if(empty($rows)) plo('index.php');
 
-
-foreach($rows as $row){
-  $prod=array(
-    'Id'=>$row['Id'],
-    'Name'=>$row['Name'],
-    'Pic'=>unserialize($row['MainPic']),
-    'SpecName'=>$row['SpecName'],
-    'Spec'=>unserialize($row['Spec']),
-    'Price'=>$row['Price'],
-    'Nprice'=>$row['Nprice'],
-    'PkPrice'=>$row['PkPrice'],
-    'ShortDesc'=>$row['ShortDesc'],
-    'ProdDesc'=>$row['ProdDesc'],
+foreach ($rows as $row) {
+  $prod = array(
+    'Id' => $row['Id'],
+    'Name' => $row['Name'],
+    'Pic' => unserialize($row['MainPic']),
+    'SpecName' => $row['SpecName'],
+    'Spec' => unserialize($row['Spec']),
+    'Price' => $row['Price'],
+    'Nprice' => $row['Nprice'],
+    'PkPrice' => $row['PkPrice'],
+    'ShortDesc' => $row['ShortDesc'],
+    'ProdDesc' => $row['ProdDesc'],
   );
 }
 ?>
@@ -101,22 +102,22 @@ foreach($rows as $row){
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="product-details-image">
             <div class="slider-for slider">
-            <?php
-                foreach($prod['Pic'] as $value){
-                  if(strpos($value,'.')){
-                    echo '<div><img src="upload/prod/'.$value.'" alt="" /></div>';
-                  }
-                }
-            ?>                         
-            </div>
-            <ul id="productthumbnail" class="slider slider-nav">
-            <?php
-              foreach($prod['Pic'] as $value){
-                if(strpos($value,'.')){
-                  echo '<li><img src="upload/prod/'.$value.'" alt="" /></li>';
+              <?php
+              foreach ($prod['Pic'] as $value) {
+                if (strpos($value, '.')) {
+                  echo '<div><img src="upload/prod/' . $value . '" alt="" /></div>';
                 }
               }
-            ?>
+              ?>
+            </div>
+            <ul id="productthumbnail" class="slider slider-nav">
+              <?php
+              foreach ($prod['Pic'] as $value) {
+                if (strpos($value, '.')) {
+                  echo '<li><img src="upload/prod/' . $value . '" alt="" /></li>';
+                }
+              }
+              ?>
 
             </ul>
           </div>
@@ -128,15 +129,15 @@ foreach($rows as $row){
             <!-- Rattion Price -->
             <div class="price-ratting">
               <div class="price float-left">
-                 <?php if (($prod['Price'] == $prod['Nprice'])) {
-                    echo '$'.$prod['Price'];
-                  }else echo '<span style="color:red;font-size:35px">$'.$prod['Nprice'].'</span>  <del> $'.$rows[0]['Price'].'</del>' ?>
+                <?php if (($prod['Price'] == $prod['Nprice'])) {
+                  echo '<span>$ </span><span class="realprice" style="font-size:25px">' . $prod['Price'] . '</span>';
+                } else echo '<span style="color:red">$ </span><span class="realprice" style="color:red;font-size:25px">' . $prod['Nprice'] . '</span>  <del> $' . $rows[0]['Price'] . '</del>' ?>
               </div>
             </div>
             <!-- Short Description -->
             <div class="short-desc">
               <h5 class="sub-title">簡介</h5>
-              <?=(empty($prod['ShortDsec']))?'<div style="height:100px">暫無簡介</div>':'<p>'.$rows[0]['ShortDsec'].'</p>'?>
+              <?= (empty($prod['ShortDsec'])) ? '<div style="height:100px">暫無簡介</div>' : '<p>' . $rows[0]['ShortDsec'] . '</p>' ?>
 
             </div>
             <!-- Product Size -->
@@ -148,15 +149,20 @@ foreach($rows as $row){
             <div class="product-color">
               <h5 class="sub-title">選擇尺寸</h5>
               <?php
-                foreach($prod['Spec']['size'] as $value =>$key){
-                echo '<span>'.$key.'</span>';
-                }
+              foreach ($prod['Spec']['size'] as $value => $key) {
+                echo '<span>' . $key . '</span>';
+              }
               ?>
+            </div>
+            <div class="product-qty">
+              <span class="active" onclick="chgqty(this,'sub')">-</span>
+              <span calss="number">1</span>
+              <span class="active" onclick="chgqty(this,'add')">+</span>
             </div>
             <!-- Quantity Cart -->
             <div class="quantity-cart">
               <button class="btn btn-common"><i class="icon-heart"></i> 加入願望清單</button>
-              <button class="btn btn-common"><i class="icon-basket-loaded"></i> 加入購物車</button>
+              <button class="btn btn-common" onclick="addcart(this)"><i class="icon-basket-loaded"></i> 加入購物車</button>
             </div>
           </div>
         </div>
@@ -181,7 +187,7 @@ foreach($rows as $row){
           <div class="tab-content">
             <div class="tab-pane active" id="description">
               <div class="pro-tab-info pro-description">
-              <?=(empty($rows[0]['ProdDesc']))?'暫無商品敘述':'<p>'.$rows[0]['ProdDesc'].'</p>'?>
+                <?= (empty($rows[0]['ProdDesc'])) ? '暫無商品敘述' : '<p>' . $rows[0]['ProdDesc'] . '</p>' ?>
               </div>
             </div>
           </div>
@@ -258,6 +264,41 @@ foreach($rows as $row){
       $(this).parent('div').find("span").removeClass("active");
       $(this).addClass("active");
     });
+    function addcart(e) {
+      let name = $(e).parents().find('.info-panel h1').text();
+      let prodid = $(e).parents().find('.info-panel input[name=id]').val();
+      let qty = $(e).parents().find('div .product-qty span').eq(1).text()
+      let spec = $(e).parents().find('div .product-size span').text()
+      let size = $(e).parents().find('div .product-color .active').text()
+      let price = $(e).parent().siblings('.price-ratting').children().find('.realprice').text();
+      $.post('api/cart.api.php?do=addcart', {
+        prodid,
+        name,
+        qty,
+        spec,
+        size,
+        price
+      })
+    }
+
+    function chgqty(who, what) {
+      switch (what) {
+        case 'add':
+          var $values = $(who).parent().children().eq(1).text();
+          $values = $values - 0 + 1;
+          $(who).parent().children().eq(1).text($values);
+          break;
+        case 'sub':
+          var $values = $(who).parent().children().eq(1).text();
+          if ($values == 1) {
+            $value = 1;
+          } else {
+            $values = $values - 1;
+          }
+          $(who).parent().children().eq(1).text($values);
+          break;
+      }
+    }
   </script>
 </body>
 

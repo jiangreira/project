@@ -1,13 +1,13 @@
 <?php
-$db = new PDO("mysql:host=127.0.0.1;dbname=s1080407;charset=utf8", "root", "");
+require_once('api/library.php');
 $catafloor0 = $db->query("SELECT * FROM picker_cate WHERE Floor=0")->fetchAll(PDO::FETCH_ASSOC);
-if(empty($_GET['id'])){
+if (empty($_GET['id'])) {
   header('location:category.php?id=all');
 }
-if($_GET['id']=='all'){
-  $prodlist=$db->query("SELECT * FROM picker_prod")->fetchAll(PDO::FETCH_ASSOC);
-}else $prodlist=$db->query("SELECT * FROM picker_prod WHERE CateId=".$_GET['id'])->fetchAll(PDO::FETCH_ASSOC);
-
+if ($_GET['id'] == 'all') {
+  $prodlist = $db->query("SELECT * FROM picker_prod")->fetchAll(PDO::FETCH_ASSOC);
+} else $prodlist = $db->query("SELECT * FROM picker_prod WHERE CateId=" . $_GET['id'])->fetchAll(PDO::FETCH_ASSOC);
+print_r($_SESSION['cart']);
 
 ?>
 <!DOCTYPE html>
@@ -123,41 +123,42 @@ if($_GET['id']=='all'){
 
               <!-- 網格狀 -->
               <div id="grid-view" class="tab-pane active">
-              <?php
-                foreach($prodlist as $list ){
-                  ?>
+                <?php
+                foreach ($prodlist as $list) {
+                ?>
                   <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="shop-product">
-                    <div class="product-box">
-                      <input type="hidden" name="id" value="<?=$list['Id']?>">
-                      <a href="#"><img src="upload/prod/<?=unserialize($list['MainPic'])[0]?>" alt=""></a>
-                      <div class="cart-overlay">
-                      </div>
-                      <div class="actions">
-                        <div class="add-to-links">
-                          <a href="#" class="btn-wish"><i class="icon-heart"></i></a>
-                          <a class="btn-quickview md-trigger" data-modal="modal-3" onclick='addcart(this)'><i class="icon-eye"></i></a>
+                    <div class="shop-product">
+                      <div class="product-box">
+                        <input type="hidden" name="id" value="<?= $list['Id'] ?>">
+                        <a href="#"><img src="upload/prod/<?= unserialize($list['MainPic'])[0] ?>" alt=""></a>
+                        <div class="cart-overlay">
+                        </div>
+                        <div class="actions">
+                          <div class="add-to-links">
+                            <a href="#" class="btn-wish"><i class="icon-heart"></i></a>
+                            <a class="btn-quickview md-trigger" data-modal="modal-3" onclick='quickview(this)'><i class="icon-eye"></i></a>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="product-info">
-                      <h4 class="product-title"><a href="product-details.html"><?=$list['Name']?></a></h4>
-                      <div class="align-items">
-                        <div class="pull-left">
-                        <?php if (($list['Price'] == $list['Nprice'])) {
-                    echo '$'.$list['Price'];
-                  }else echo '<span style="color:red;font-size:25px">$'.$list['Nprice'].'</span>  <del> $'.$list['Price'].'</del>' ?>
+                      <div class="product-info">
+                        <h4 class="product-title"><a href="product-details.php?id=<?= $list['Id'] ?>"><?= $list['Name'] ?></a></h4>
+                        <div class="align-items">
+                          <div class="pull-left">
+                            <?php if (($list['Price'] == $list['Nprice'])) {
+                              echo '<span>$ </span><span class="realprice" style="font-size:25px">' . $list['Price']. '</span>';
+                            } else echo '<span style="color:red;">$ </span><span class="realprice"style="color:red;font-size:25px">' . $list['Nprice'] . '</span>  <del> $' . $list['Price'] . '</del>' ?>
+                        
                         </div>
-                       
+
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                 <?php
+                <?php
                 }
-              ?>
-                
-                
+                ?>
+
+
               </div>
               <!-- 清單狀 -->
               <div id="list-view" class="tab-pane">
@@ -219,19 +220,22 @@ if($_GET['id']=='all'){
   include('idx_footer.php');
   ?>
 
-  <!-- All modals added here for the demo -->
-  <div class="md-modalprod md-effect-3" id="modal-3">
-    <div class="md-content">
-      <!-- Product Info Start -->
-      <div class="product-info row">
-        <div class="col-md-8 col-sm-6">
+  <div class="modal fade" id="quickprod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:8001">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="prodid" value="">
           <div class="info-panel">
             <h3>Proin Lectus Ipsum</h3>
             <!-- Rattion Price -->
             <div class="price-ratting2">
-              <div class="price float-left">$ 120.00</div>    
+              <div class="price float-left">$ 120.00</div>
             </div>
-
             <!-- Product Size -->
             <div class="product-size">
               <h5 class="tb">規格</h5>
@@ -239,25 +243,25 @@ if($_GET['id']=='all'){
             </div>
             <div class="product-color">
               <h5 class="tb">選擇尺寸</h5>
-              <span>S</span>
-              <span>M</span>
-              <span>L</span>
-              <span>XL</span>
+            </div>
+            <div class="product-qty">
+              <span class="active" onclick="chgqty(this,'sub')">-</span>
+              <span calss="number">1</span>
+              <span class="active" onclick="chgqty(this,'add')">+</span>
             </div>
             <!-- Quantity Cart -->
             <div class="quantity-cart">
-              <button class="btn btn-common">加入購物車<i class="icon-basket"></i></button>
+              <button type="button" class="btn btn-common" onclick="addcart(this)"><i class="icon-basket"></i>加入購物車</button>
             </div>
-
           </div>
         </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
       </div>
-      <!-- Product Info End -->
-      <button class="md-close"><i class="icon-close"></i></button>
     </div>
   </div>
-  <div class="md-overlay"></div>
-  <!-- the overlay element -->
 
   <!-- All js here -->
   <script type="text/javascript" src="assets/js/jquery-min.js"></script>
@@ -276,19 +280,78 @@ if($_GET['id']=='all'){
   <script type="text/javascript" src="assets/js/jquery.themepunch.tools.min.js"></script>
   <script type="text/javascript" src="assets/js/main.js"></script>
   <script>
-    $("div.product-color span").eq(0.).addClass('active');
-    $("div.product-color span").click(function(e) {
-      e.preventDefault();
-      $(this).parent('div').find("span").removeClass("active");
-      $(this).addClass("active");
-    });
-    init();
-function addcart(e){
-  $id=$(e).parents('div .shop-product').find('input[name=id]').val();
-  console.log($id)
-}
+    function quickview(e) {
+      let id = $(e).parents('div .shop-product').find('input[name=id]').val()
+      $.post('api/all.api.php?do=quickview', {
+        id
+      }, function(re) {
+        let quickview = JSON.parse(re);
+        $('#quickprod').find('.info-panel h3').text(`${quickview.Name}`);
+        $('#quickprod').find('.product-size span').text(`${quickview.SpecName}`);
+        if ((quickview.Nprice) == (quickview.Price)) {
+          $('#quickprod').find('.price-ratting2 .price').html(`
+          <span>$ </span><span class="realprice" style="font-size:25px">${quickview.Price}</span>`);
+        } else {
+          $('#quickprod').find('.price-ratting2 .price').html(`
+          <span style="color:red">$ </span><span class="realprice" style="color:red;font-size:25px"> ${quickview.Nprice}</span>  <del>$ ${quickview.Price} </del>`);
+        }
+        let print = '';
+        for (i = 0; i < quickview.Spec.size.length; i++) {
+          print += `<span>${quickview.Spec.size[i]}</span>`;
+        }
+        $('#quickprod').find('.product-color').html(`<h5 class="tb">選擇尺寸</h5>${print}`);
+        $('#quickprod').modal();
 
-    
+
+        $('#quickprod').find('input[name=prodid]').val(id);
+
+        $("div.product-color span").eq(0.).addClass('active');
+        $("div.product-color span").click(function(e) {
+          e.preventDefault();
+          $(this).parent('div').find("span").removeClass("active");
+          $(this).addClass("active");
+        });
+      })
+    }
+  </script>
+  <script>
+    function addcart(e) {
+      let name = $(e).parents().find('.info-panel h3').text();
+      let prodid = $(e).parents('#quickprod').find('input[name=prodid]').val()
+      let qty = $(e).parents().find('div .product-qty span').eq(1).text()
+      let spec = $(e).parents().find('div .product-size span').text()
+      let size = $(e).parents().find('div .product-color .active').text()
+      let price = $(e).parent().siblings('.price-ratting2').children().find('.realprice').text();
+      $.post('api/cart.api.php?do=addcart', {
+        prodid,
+        name,
+        qty,
+        spec,
+        size,
+        price
+      }, function(re) {
+        $('#quickprod').modal('hide');
+      })
+    }
+
+    function chgqty(who, what) {
+      switch (what) {
+        case 'add':
+          var $values = $(who).parent().children().eq(1).text();
+          $values = $values - 0 + 1;
+          $(who).parent().children().eq(1).text($values);
+          break;
+        case 'sub':
+          var $values = $(who).parent().children().eq(1).text();
+          if ($values == 1) {
+            $value = 1;
+          } else {
+            $values = $values - 1;
+          }
+          $(who).parent().children().eq(1).text($values);
+          break;
+      }
+    }
   </script>
 </body>
 

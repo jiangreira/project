@@ -73,7 +73,13 @@ a:focus {
 }
 /*====================================================
 		bootstrap default style overriding
-	====================================================*/
+  ====================================================*/
+  .btn-custom {
+    background: #2d691a;
+    position: relative;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  }  
+
 .btn {
   color: #fff;
   border-radius: 2px;
@@ -97,6 +103,7 @@ a:focus {
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.15);
 }
+
 .btn-common::before {
   content: '';
   position: absolute;
@@ -343,7 +350,7 @@ a:focus {
 .navbar-default.affix {
   width: 100%;
   top: 0;
-  z-index: 99999;
+  z-index: 8000;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 .navbar-default.affix .navbar-brand {
@@ -1007,7 +1014,7 @@ button {
   width: 70px;
 }
 .cart-box .content {
-  padding: 0px 20px 0 85px;
+  padding: 0px 20px 0 0px;
   text-align: left;
 }
 .cart-box .content .title {
@@ -2295,9 +2302,9 @@ footer .block-subscribe .form-control {
 .wishlist-entry .btn {
   padding: 8px 24px;
 }
-.quantity-selector {
+/* .quantity-selector {
   margin-top: 42px;
-}
+} */
 .quantity-selector .entry {
   border: 1px solid #d1d1d1;
   height: 37px;
@@ -2581,7 +2588,7 @@ checkbox .checkbox-material {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
-  -0-transform: scale(1);
+  -o-transform: scale(1);
   transform: scale(1);
 }
 .shop-product:hover .cart-overlay {
@@ -2702,13 +2709,17 @@ button:hover {
   width: 30px;
 }
 .info-panel .product-size,
-.info-panel .product-color {
+.info-panel .product-color,
+.info-panel .product-qty
+ {
   width: 100%;
   display: inline-block;
   margin-bottom: 25px;
+  
 }
 .info-panel .product-size span,
-.info-panel .product-color span {
+.info-panel .product-color span,
+.info-panel .product-qty span {
   padding: 6px 12px;
   border-radius: 2px;
   float: left;
@@ -2725,6 +2736,10 @@ button:hover {
 }
 .info-panel .product-color span.active {
   background: #21b670;
+  color: #fff;
+}
+.info-panel .product-qty span.active {
+  background: #d88810;
   color: #fff;
 }
 .info-panel .color-list {
