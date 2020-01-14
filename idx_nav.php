@@ -47,7 +47,7 @@ $catafloor0 = select('picker_cate', 'Floor=0');
             </li>
             <li><a class="cart-icon cart-btn" href="wishlist.php"><span class="icon-heart"></span></a></li>
             <li>
-              <a href="#" class="cart-icon cart-btn"><i class="icon-basket"></i></a>
+              <a href="shopping-cart.php" class="cart-icon cart-btn"><i class="icon-basket"></i></a>
               <div class="cart-box">
                 <div class="popup-container">
                   <?php
@@ -75,7 +75,7 @@ $catafloor0 = select('picker_cate', 'Floor=0');
                       <div class="price-s"><?='$ '.number_format($total,2)?></div>
                     </div>
                     <div class="cart-buttons">
-                      <a href="#" class="btn btn-border-2">查看購物車</a>
+                      <a href="shopping-cart.php" class="btn btn-border-2">查看購物車</a>
                       <a href="#" class="btn btn-common">我要結帳</a>
                       <div class="clear"></div>
                     </div>

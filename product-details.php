@@ -85,7 +85,7 @@ foreach ($rows as $row) {
       <div class="row">
         <div class="col-md-12">
           <div class="breadcrumb">
-            <a href="#"><i class="icon-home"></i> 首頁</a>
+            <a href="index.php"><i class="icon-home"></i> 首頁</a>
             <span class="crumbs-spacer"><i class="fa fa-angle-double-right"></i></span>
             <span class="current">Single Product</span>
           </div>

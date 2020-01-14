@@ -7,8 +7,6 @@ if (empty($_GET['id'])) {
 if ($_GET['id'] == 'all') {
   $prodlist = $db->query("SELECT * FROM picker_prod")->fetchAll(PDO::FETCH_ASSOC);
 } else $prodlist = $db->query("SELECT * FROM picker_prod WHERE CateId=" . $_GET['id'])->fetchAll(PDO::FETCH_ASSOC);
-print_r($_SESSION['cart']);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

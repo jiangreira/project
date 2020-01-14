@@ -212,7 +212,7 @@ require_once('api/library.php');
 
 
   <!-- Modal -->
-  <div class="modal fade" id="quickprod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:8001"> 
+  <div class="modal fade" id="quickprod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:8001">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -221,7 +221,7 @@ require_once('api/library.php');
           </button>
         </div>
         <div class="modal-body">
-        <input type="hidden" name="prodid" value="">
+          <input type="hidden" name="prodid" value="">
           <div class="info-panel">
             <h3>Proin Lectus Ipsum</h3>
             <!-- Rattion Price -->
@@ -245,7 +245,7 @@ require_once('api/library.php');
             <div class="quantity-cart">
               <button type="button" class="btn btn-common" onclick="addcart(this)"><i class="icon-basket"></i>加入購物車</button>
             </div>
-        </div>
+          </div>
         </div>
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -465,7 +465,8 @@ require_once('api/library.php');
         });
       })
     }
-let test
+    let test
+
     function addcart(e) {
       let name = $(e).parents().find('.info-panel h3').text();
       let prodid = $(e).parents('#quickprod').find('input[name=prodid]').val()
@@ -473,7 +474,7 @@ let test
       let spec = $(e).parents().find('div .product-size span').text()
       let size = $(e).parents().find('div .product-color .active').text()
       let price = $(e).parent().siblings('.price-ratting2').children().find('.realprice').text();
-      
+
       $.post('api/cart.api.php?do=addcart', {
         prodid,
         name,
