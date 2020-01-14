@@ -1,4 +1,8 @@
-<!-- @format -->
+<?php
+require_once('api/library.php');
+if(isset($_SESSION['user'])) plo('index.php');
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

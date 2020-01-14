@@ -198,48 +198,9 @@ foreach ($rows as $row) {
   <!-- Single-prouduct-tab End -->
 
   <!-- Footer Start -->
-  <footer class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="contact-us">
-            <h3 class="widget-title">Contact Us</h3>
-            <ul class="contact-list">
-              <li><i class="icon-home"></i><span>888 6th 10001 Oakwood Avenue, New York City, NY</span></li>
-              <li>
-                <i class="icon-call-out"></i>
-                <span>212-631-5135 <br />
-                  212-631-5105</span>
-              </li>
-              <li><i class="icon-envelope"></i> <span>sales@emart.com support@emart.com</span></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <h3 class="widget-title">Useful Links</h3>
-          <ul>
-            <li><a href="login.html">My Account</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="wishlist.html">Wishlist</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- Footer End -->
-
-  <!-- Copyright Start -->
-  <div id="copyright">
-    <div class="container text-center">
-      <p>All copyrights reserved &copy; 2017 - Designed & Developed by</p>
-    </div>
-  </div>
-  <!-- Copyright End -->
-
-  <!-- Go To Top Link -->
-  <a href="#" class="back-to-top">
-    <i class="icon-arrow-up"></i>
-  </a>
+  <?php
+  include('idx_footer.php');
+  ?>
 
   <!-- All js here -->
   <script type="text/javascript" src="assets/js/jquery-min.js"></script>
@@ -264,6 +225,7 @@ foreach ($rows as $row) {
       $(this).parent('div').find("span").removeClass("active");
       $(this).addClass("active");
     });
+
     function addcart(e) {
       let name = $(e).parents().find('.info-panel h1').text();
       let prodid = $(e).parents().find('.info-panel input[name=id]').val();

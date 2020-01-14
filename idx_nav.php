@@ -76,35 +76,12 @@ $catafloor0 = select('picker_cate', 'Floor=0');
                     </div>
                     <div class="cart-buttons">
                       <a href="shopping-cart.php" class="btn btn-border-2">查看購物車</a>
-                      <a href="#" class="btn btn-common">我要結帳</a>
+                      <a href="checkout.php" class="btn btn-common">我要結帳</a>
                       <div class="clear"></div>
                     </div>
                   <?php
                   }
                   ?>
-                  <!-- <div class="cart-entry">
-                    <div class="content">
-                      <a href="#" class="title">Pullover Batwing</a>
-                      <p class="quantity">規格:無規格、尺寸: S、數量: 3</p>
-                      <span class="price">$45 </span><span>/pics</span>
-                    </div>
-                  </div>
-                  <div class="cart-entry">
-                    <div class="content">
-                      <a href="#" class="title">Pullover Batwing</a>
-                      <p class="quantity">規格:無規格、尺寸: S、數量: 3</p>
-                      <span class="price">$45 </span><span>/pics</span>
-                    </div>
-                  </div> -->
-                  <!-- <div class="summary">
-                    <div class="subtotal">總計</div>
-                    <div class="price-s">$2100</div>
-                  </div>
-                  <div class="cart-buttons">
-                    <a href="#" class="btn btn-border-2">查看購物車</a>
-                    <a href="#" class="btn btn-common">我要結帳</a>
-                    <div class="clear"></div>
-                  </div> -->
                 </div>
               </div>
             </li>

@@ -14,3 +14,16 @@ CREATE TABLE `s1080407`.`picker_memberinfo` ( `Id` INT(5) UNSIGNED NOT NULL AUTO
 
 
 ALTER TABLE `picker_memberinfo` CHANGE `Id` `Id` INT(5) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '會員編號', CHANGE `Name` `Name` VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '會員名稱(Woman:女,Men:男)', CHANGE `Gender` `Gender` VARCHAR(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '性別', CHANGE `Birth` `Birth` VARCHAR(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '生日', CHANGE `Email` `Email` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '信箱';
+-- 訂單
+CREATE TABLE `s1080407`.`picker_orderinfo` ( `Id` INT(50) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '訂單編號' ,  `MemberId` INT(5) NOT NULL COMMENT '會員編號' ,  `MemberType` INT(2) NOT NULL COMMENT '會員類型' ,  `OdrDetail` TEXT NOT NULL COMMENT '訂單明細' ,  `DealPrice` INT(10) NOT NULL COMMENT '交易金額' ,  `Status` VARCHAR(50) NULL DEFAULT '0' COMMENT '交易狀態' ,  `Credate` DATETIME NOT NULL COMMENT '新增時間' ,  `Upddate` DATETIME NOT NULL COMMENT '修改時間' ,    PRIMARY KEY  (`Id`)) ENGINE = InnoDB COMMENT = '訂單明細';
+
+-- 訂單寄送
+CREATE TABLE `s1080407`.`picker_trans` ( `OrderId` INT(50) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '訂單編號' ,  `MemberId` INT(5) NOT NULL COMMENT '會員編號' ,  `Recipient` VARCHAR(50) NULL COMMENT '收件人' ,  `Re_Addr` VARCHAR(50) NULL COMMENT '收件人地址' ,  `Re_Phone` VARCHAR(20) NULL COMMENT '收件人電話' ,  `Credate` DATETIME NOT NULL COMMENT '新增時間' ,  `Upddate` DATETIME NOT NULL COMMENT '修改時間' ,    PRIMARY KEY  (`OrderId`)) ENGINE = InnoDB COMMENT = '訂單寄送資訊';
+
+ALTER TABLE `picker_trans` ADD `UUID` INT(10) NOT NULL FIRST;
+ALTER TABLE `picker_trans` CHANGE `OrderId` `OrderId` INT(50) NOT NULL COMMENT '訂單編號';
+ALTER TABLE `picker_trans` DROP PRIMARY KEY, ADD PRIMARY KEY(`UUID`);
+ALTER TABLE `picker_trans` CHANGE `UUID` `UUID` INT(10) NOT NULL AUTO_INCREMENT;
+
+以上上傳完
+-- ------------------------------------------

@@ -4,10 +4,10 @@ switch ($_GET['do']) {
     case 'login':
         $re = $db->query("SELECT * FROM picker_member WHERE ACC='" . $_POST['name'] . "' AND PWD='" . $_POST['password'] . "'")->fetchAll(PDO::FETCH_ASSOC);
         if ($re) {
-            $_SESSION['admin'] = $_POST['name'];
-            print_r($re);
+            $_SESSION['user'] = $_POST['name'];
             $_SESSION['membertype'] = $re[0]['MemberType'];
-            plo('../index.php');
+            $_SESSION['userid'] = $re[0]['MemberId'];
+            echo'<script>window.history.go(-2)</script>>';
         } else echo "<script>alert('帳號或密碼錯誤');" . jlo("../login.php") . "</script>";
         break;
     case 'register':

@@ -76,78 +76,59 @@ require_once('api/library.php');
   <div id="content">
     <div class="container">
       <?php
-      if (!isset($_SESSION['cart'])) {
-        if (isset($_SESSION['admin'])) {
-          echo '<a href="check.php" class="btn btn-common">我要結帳</a>';
+      if (isset($_SESSION['cart'])) {
+        if (isset($_SESSION['user'])) {
+          echo '<a href="checkout.php" class="btn btn-common">我要結帳</a>';
         } else {
-          echo '<a href="check.php?do=cartlogin" class="btn btn-common">我要結帳</a>';
+          echo '<a href="login.php" class="btn btn-common">我要結帳</a>';
+        }
+      }
+      ?>
+      <h3 class="small-title text-center">購物車</h3>
+      <?php
+      if (!isset($_SESSION['cart'])) {
+        echo '<h4 style="margin-top:10px">購物車無商品</h4>';
+      } else {
+        echo '<div style="margin-top:5px;height:10px;"> </div>';
+        foreach ($_SESSION['cart'] as $cartprod) {
+      ?>
+          <div class="wishlist-entry clearfix">
+            <div class="info-panel">
+              <input type="hidden" name="id" value="<?= $cartprod['prodid'] ?>">
+              <h3 class="mbh3"><?= $cartprod['name'] ?></h3>
+              <span class="tb2">規格 - <span></span><?= $cartprod['spec'] ?></span>
+              <span class="tb2">尺寸 - <span></span><?= $cartprod['size'] ?></span>
+              <span class="tb2">單價 - $<span style="font-size: 25px"><?= $cartprod['price'] ?></span></span>
+              <p></p>
+              <span class="tb2">數量 <span><?= $cartprod['qty'] ?></span></span>
+
+              <div class="product-qty tb2">
+                <span class="active" onclick="chgqty(this,'sub')">-</span>
+                <span calss="number">1</span>
+                <span class="active" onclick="chgqty(this,'add')">+</span>
+              </div>
+              <div class="cartp">
+                <span class="tb2">總計 $</span><span style="color:red;font-size: 32px">1280</span>
+              </div>
+              <div class="delicon" ondblclick="delprod(this)">
+                <i class="icon-close" style="font-size: 25px"></i>
+              </div>
+            </div>
+          </div>
+      <?php
         }
       }
 
-
       ?>
-
-      <div class="header text-center">
-        <h3 class="small-title">購物車</h3>
-        <?php
-        if (!isset($_SESSION['cart'])) {
-          echo '<h4 style="margin-top:10px">購物車無商品</h4>';
+      <?php
+      if (isset($_SESSION['cart'])) {
+        if (isset($_SESSION['user'])) {
+          echo '<a href="checkout.php" class="btn btn-common">我要結帳</a>';
         } else {
-          foreach ($_SESSION['cart'] as $cartprod) {
-        ?>
-            <div class="wishlist-entry clearfix">
-              <div class="info-panel">
-                <input type="hidden" name="id" value="<?=$cartprod['prodid']?>">
-                <h3 class="mbh3"><?=$cartprod['name']?></h3>
-                <span class="tb2">規格 -<span></span><?=$cartprod['spec']?></span>
-                <span class="tb2">尺寸 -<span></span><?=$cartprod['size']?></span>
-                <span class="tb2">單價 - $<span style="font-size: 25px"><?=$cartprod['price']?></span></span>
-                <p></p>
-                <span class="tb2">數量 -<span></span></span>
-
-                <div class="product-qty tb2">
-                  <span class="active" onclick="chgqty(this,'sub')">-</span>
-                  <span calss="number">1</span>
-                  <span class="active" onclick="chgqty(this,'add')">+</span>
-                </div>
-                <div class="cartp">
-                  <span class="tb2">總計 $</span><span style="color:red;font-size: 32px">1280</span>
-                </div>
-                <div class="delicon" ondblclick="delprod(this)">
-                  <i class="icon-close" style="font-size: 25px"></i>
-                </div>
-              </div>
-            </div>
-        <?php
-          }
+          echo '<a href="login.php" class="btn btn-common">我要結帳</a>';
         }
-        ?>
-      </div>
-      <div class="wishlist-entry clearfix">
-        <div class="info-panel">
-          <input type="hidden" name="id" value="">
-          <h3 class="mbh3">Proin Lectus Ipsum</h3>
-          <span class="tb2">規格 -<span></span></span>
-          <span class="tb2">尺寸 -<span></span></span>
-          <span class="tb2">單價 - $<span style="font-size: 25px">899</span></span>
-          <p></p>
-          <span class="tb2">數量 -<span></span></span>
-
-          <div class="product-qty tb2">
-            <span class="active" onclick="chgqty(this,'sub')">-</span>
-            <span calss="number">1</span>
-            <span class="active" onclick="chgqty(this,'add')">+</span>
-          </div>
-          <div class="cartp"> 
-            <span class="tb2">總計 $</span><span style="color:red;font-size: 32px">1280</span>
-          </div>
-          <div class="delicon" ondblclick="delprod(this)">
-            <i class="icon-close" style="font-size: 25px"></i>
-          </div>
-        </div>
-
-      </div>
-
+      }
+      ?>
     </div>
 
   </div>
