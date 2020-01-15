@@ -18,8 +18,8 @@ if ($_GET['id'] == 'all') {
   <meta name="author" content="Ecommerce">
   <title>Picker批客</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.png">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/littlelogo.ico">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
@@ -71,7 +71,6 @@ if ($_GET['id'] == 'all') {
             <a href="#"><i class="icon-home"></i> Home</a>
             <span class="crumbs-spacer"><i class="fa fa-angle-double-right"></i></span>
             <span class="current">分類商品</span>
-            <h2 class="entry-title">Shop Categories</h2>
           </div>
         </div>
       </div>
@@ -128,7 +127,7 @@ if ($_GET['id'] == 'all') {
                     <div class="shop-product">
                       <div class="product-box">
                         <input type="hidden" name="id" value="<?= $list['Id'] ?>">
-                        <a href="#"><img src="upload/prod/<?= unserialize($list['MainPic'])[0] ?>" alt=""></a>
+                        <a href="#"><img src="upload/prod/<?= unserialize($list['MainPic'])[0] ?>"></a>
                         <div class="cart-overlay">
                         </div>
                         <div class="actions">

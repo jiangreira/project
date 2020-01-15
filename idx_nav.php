@@ -7,7 +7,7 @@ $catafloor0 = select('picker_cate', 'Floor=0');
 <div class="header">
   <nav class="navbar navbar-default" data-spy="affix" data-offset-top="50">
     <div class="container">
-      <div class="row">
+
         <div class="navbar-header">
           <!-- Stat Toggle Nav Link For Mobiles -->
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,9 +43,16 @@ $catafloor0 = select('picker_cate', 'Floor=0');
           <!--即視購物車位置 wish -->
           <ul class="nav navbar-nav">
             <li>
-              <a href="login.php" class="cart-icon cart-btn"><i class="icon-user"></i></a>
+              <?php
+              if(isset($_SESSION['userid'])) {
+                echo '<a href="member.php" class="cart-icon cart-btn"><i class="icon-user"></i></a>';
+              }else{
+                echo '<a href="login.php" class="cart-icon cart-btn"><i class="icon-user"></i></a>';
+              }
+              ?>
+              
             </li>
-            <li><a class="cart-icon cart-btn" href="wishlist.php"><span class="icon-heart"></span></a></li>
+            <!-- <li><a class="cart-icon cart-btn" href="wishlist.php"><span class="icon-heart"></span></a></li> -->
             <li>
               <a href="shopping-cart.php" class="cart-icon cart-btn"><i class="icon-basket"></i></a>
               <div class="cart-box">
@@ -88,7 +95,7 @@ $catafloor0 = select('picker_cate', 'Floor=0');
           </ul>
           <!-- End Navigation List -->
         </div>
-      </div>
+
     </div>
     <!-- End Header Logo & Naviagtion -->
 
@@ -103,8 +110,10 @@ $catafloor0 = select('picker_cate', 'Floor=0');
           } ?>
         </ul>
       </li>
+      <li><a href="member.php">我的帳戶</a></li>
       <li><a href="about.php">關於Picker批客</a></li>
       <li><a href="contact.php">聯絡我們</a></li>
+
     </ul>
     <!-- Mobile Menu End -->
   </nav>

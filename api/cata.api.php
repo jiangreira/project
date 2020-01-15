@@ -3,11 +3,11 @@ require_once('library.php');
 
 switch ($_GET['cata']) {
     case 'add':
-        $rows = insertcata($_POST, "Picker_cate");
+        $rows = insertcata($_POST, "picker_cate");
         plo("../pages/cataloge.php");
         break;
     case 'list':
-        $rows = selectcata("Picker_cate", 1);
+        $rows = selectcata("picker_cate", 1);
         $list = array();
         foreach ($rows as $row) {
             $list[] = array(
@@ -22,14 +22,14 @@ switch ($_GET['cata']) {
         break;
     case 'addsub':
         if (!empty($_POST['Catasubname'])) {
-            insertcata($_POST, "Picker_cate");
+            insertcata($_POST, "picker_cate");
             plo("../pages/cataloge.php");
         } else {
             plo("../pages/cataloge.php");
         }
         break;
     case 'cataname':
-        $rows = selectcolumn("Picker_cate", "Id,Name", "");
+        $rows = selectcolumn("picker_cate", "Id,Name", "");
         $list = array();
         foreach ($rows as $row) {
             $list[] = array('Id' => $row['Id'], 'Name' => $row['Name']);
@@ -41,7 +41,7 @@ switch ($_GET['cata']) {
 
         break;
     case 'catamain':
-        $rows = select("Picker_cate", "ParentId=0");
+        $rows = select("picker_cate", "ParentId=0");
         $list = array();
         foreach ($rows as $row) {
             $list[] = array('Id' => $row['Id'], 'Name' => $row['Name']);
@@ -52,25 +52,24 @@ switch ($_GET['cata']) {
         break;
     case 'catasublist':
         // print_r($_POST);
-        $rows = select("Picker_cate", "ParentId=" . ($_POST['id']));
+        $rows = select("picker_cate", "ParentId=" . ($_POST['id']));
         $list = array();
         foreach ($rows as $row) {
             $list[] = array('Id' => $row['Id'], 'Name' => $row['Name'], 'Floor' => $row['Floor'], 'ParentId' => $row['ParentId']);
         }
         $cataname = json_encode($list);
         echo $cataname;
-        // print_r($cataname);
         break;
     case 'mdy':
 
         // print_r(empty($_POST['catasubname']));//true
         if ((!empty($_POST['catamainname'])) && (empty($_POST['catasubname']))) {
 
-            $sql = "UPDATE Picker_cate SET Upddate=NOW(),Name='" . $_POST['catamainname'] . "' WHERE Id=" . $_POST['catamainid'];
+            $sql = "UPDATE picker_cate SET Upddate=NOW(),Name='" . $_POST['catamainname'] . "' WHERE Id=" . $_POST['catamainid'];
             $db->query($sql);
         } elseif ((!empty($_POST['catasubname'])) && (!empty($_POST['catasubid']))) {
             unset($_POST['catamainname'], $_POST['catamainid']);
-            $sql = "UPDATE Picker_cate SET Upddate=NOW(),Name='" . $_POST['catasubname'] . "' WHERE Id=" . $_POST['catasubid'];
+            $sql = "UPDATE picker_cate SET Upddate=NOW(),Name='" . $_POST['catasubname'] . "' WHERE Id=" . $_POST['catasubid'];
             $db->query($sql);
             // print_r($_POST);
         };
@@ -78,16 +77,16 @@ switch ($_GET['cata']) {
         break;
     case 'del':
         if (($_POST['floor'] == 0)) {
-            $chsql = "DELETE FROM Picker_cate WHERE ParentId=" . $_POST['id'];
+            $chsql = "DELETE FROM picker_cate WHERE ParentId=" . $_POST['id'];
             $db->query($chsql);
-            $prodchsql="UPDATE Picker_prod SET CateId=0 WHERE CateId=". $_POST['id'];
+            $prodchsql="UPDATE picker_prod SET CateId=0 WHERE CateId=". $_POST['id'];
             $db->query($prodchsql);
-            $sql = "DELETE FROM Picker_cate WHERE Id=" . $_POST['id'];
+            $sql = "DELETE FROM picker_cate WHERE Id=" . $_POST['id'];
             $db->query($sql);
         } elseif ($_POST['floor'] == 1) {
-            $sql = "DELETE FROM Picker_cate WHERE Id=" . $_POST['id'];
+            $sql = "DELETE FROM picker_cate WHERE Id=" . $_POST['id'];
             $db->query($sql);
-            $prodchsql="UPDATE Picker_prod SET CateId=0 WHERE CateId=". $_POST['id'];
+            $prodchsql="UPDATE picker_prod SET CateId=0 WHERE CateId=". $_POST['id'];
             $db->query($prodchsql);
         }
         echo "OK";

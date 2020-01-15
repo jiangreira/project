@@ -1,5 +1,6 @@
 <?php
-require_once('../api/library.php')
+require_once('../api/library.php');
+if(!isset($_SESSION['admin'])) plo('login.php');
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +9,7 @@ require_once('../api/library.php')
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Picker 後臺管理</title>
+  <title>PICKER 管理後台</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -60,14 +61,7 @@ require_once('../api/library.php')
           <div class="row mb-2">
             <!-- title page -->
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Dashboard</h1>
-            </div><!-- /.col -->
-            <!-- 麵包屑 -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
-              </ol>
+              <h1 class="m-0 text-dark">數據分析</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->

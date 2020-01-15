@@ -13,7 +13,7 @@ require_once('api/library.php');
   <title>Picker批客</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.png">
+  <link rel="shortcut icon" href="assets/img/littlelogo.ico">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
@@ -294,7 +294,7 @@ require_once('api/library.php');
                 <div class="shop-product">
                   <div class="product-box">
                   <input type="hidden" name="id" value="${mainlist[i].Id}">
-                    <a href="#"><img src="upload/prod/${mainlist[i].MainPic}"  alt=""></a>
+                    <a href="#"><img src="upload/prod/${mainlist[i].MainPic}" ></a>
                     <div class="cart-overlay">
                     </div>
                     <div class="actions">
@@ -331,9 +331,9 @@ require_once('api/library.php');
       $('#new-products').find('.owl-prev').html('<i class="fa fa-angle-left"></i>');
       $('#new-products').find('.owl-next').html('<i class="fa fa-angle-right"></i>');
     })
-
+    
     $.get('api/idx.api.php?idx=mainprod', function(re) {
-      let mainlist = JSON.parse(re);
+      mainlist = JSON.parse(re);
       let print = "";
       for (i = 0; i < mainlist.length; i++) {
         print += `
@@ -341,7 +341,7 @@ require_once('api/library.php');
             <div class="shop-product">
               <div class="product-box">
                   <input type="hidden" name="id" value="${mainlist[i].Id}">
-                  <a href="#"><img src="upload/prod/${mainlist[i].MainPic}"  alt=""></a>
+                  <a href="#"><img src="upload/prod/${mainlist[i].MainPic}" ></a>
                 <div class="cart-overlay">
                 </div>
                 <div class="actions">

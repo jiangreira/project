@@ -36,8 +36,8 @@ foreach ($rows as $row) {
   <meta name="author" content="Ecommerce" />
   <title>Picker批客</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.png" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/littlelogo.ico">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
@@ -137,7 +137,7 @@ foreach ($rows as $row) {
             <!-- Short Description -->
             <div class="short-desc">
               <h5 class="sub-title">簡介</h5>
-              <?= (empty($prod['ShortDsec'])) ? '<div style="height:100px">暫無簡介</div>' : '<p>' . $rows[0]['ShortDsec'] . '</p>' ?>
+              <?= (empty($prod['ShortDesc'])) ? '<div style="height:100px">暫無簡介</div>' : '<p>' . $rows[0]['ShortDesc'] . '</p>' ?>
 
             </div>
             <!-- Product Size -->

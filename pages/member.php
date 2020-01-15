@@ -1,10 +1,16 @@
+<?php
+require_once('../api/library.php');
+if(!isset($_SESSION['admin'])) plo('login.php');
+?>
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>會員管理</title>
+  <title>PICKER 管理後台</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- bootstrap -->
@@ -30,7 +36,8 @@
     <!-- 左側slider -->
     <?php include_once('admin_slidebar.php') ?>
     <!-- end 左側slider-->
-    <!-- Content Wrapper. Contains page content -->
+
+
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <div class="content-header">
@@ -43,20 +50,19 @@
             <!-- 麵包屑 -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="admin.php">首頁</a></li>
                 <li class="breadcrumb-item active">會員管理</li>
               </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+          </div>
+        </div>
+        <hr />
       </div>
-      <!-- /.content-header -->
 
 
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <a href="prodadd.php" type="button" class="btn btn-primary text-light">新增商品</a>
           <div class="form-group mt-3 mb-3 prodlistselect">
             <select class="dropdown2 membertype" onchange="membertype()">
               <option value="all">全部</option>

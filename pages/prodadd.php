@@ -1,10 +1,15 @@
+<?php
+require_once('../api/library.php');
+if(!isset($_SESSION['admin'])) plo('login.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>商品管理-新增商品</title>
+  <title>PICKER 管理後台</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -57,12 +62,9 @@
               </ol>
             </div>
           </div>
-          <!-- /.row -->
         </div>
         <hr />
-        <!-- /.container-fluid -->
       </div>
-      <!-- /.content-header -->
 
       <!-- Main content -->
       <section class="content ">

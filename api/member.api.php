@@ -22,10 +22,18 @@ switch ($_GET['member']) {
         }
         $memberlist = json_encode($list);
         echo ($memberlist);
-
-        // print_r($memberlist);
-
-
-
         break;
+    case'infochg':
+        print_r($_SESSION['userid']);
+        print_r($_POST);
+        print_r($_GET);
+        $sql="UPDATE picker_memberinfo SET Name='".$_POST['name']."',Gender='".$_POST['gender']."',Birth='".$_POST['birth']."',Credate=NOW(),upddate=NOW() WHERE Id=".$_SESSION['userid'];
+        $db->query($sql);
+
+        echo '<script>window.history.go(-1)</script>';
+
+    break;
+    case'memberordlist':
+       
+    break;
 }

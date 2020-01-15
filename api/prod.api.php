@@ -2,7 +2,6 @@
 require_once('library.php');
 switch ($_GET['prod']) {
     case 'add';
-    print_r($_POST);
         if (
             !empty($_POST['prodname']) && (!empty($_POST['subcate'])) && (!empty($_POST['costprice'])) && (!empty($_POST['price'])) &&
             (!empty($_POST['nprice'])) && (!empty($_POST['pkprice'])) && (!empty($_POST['prodspec']))
@@ -15,7 +14,7 @@ switch ($_GET['prod']) {
             $PkPrice = $_POST['pkprice'];
             $ProdDesc = $_POST['proddesc'];
             $ShortDesc = $_POST['prodshortdesc'];
-            $SpecName=(empty($_POST['SpecName']))?'無規格':$_POST['Spec'];
+            $SpecName=(empty($_POST['specname']))?'無規格':$_POST['specname'];
             // 壓縮--
             $unprodspec = ($_POST['prodspec']);
             $prodspec = serialize($unprodspec);
@@ -23,7 +22,6 @@ switch ($_GET['prod']) {
 
             $sql = "INSERT INTO picker_prod (Id,Name,CateId,CostPrice,Price,NPrice,PkPrice,SpecName,ShortDesc,Spec,ProdDesc,Credate,Upddate) 
             VALUES (null,'" . $Name . "'," . $CateId . "," . $CostPrice . "," . $Price . "," . $NPrice . "," . $PkPrice . ",'" .$SpecName."','". $ShortDesc . "','" . $prodspec . "','" . $ProdDesc . "',NOW(),NOW())";
-            print_r($sql);
             $db->query($sql);
             $returnid = $db->lastInsertId();
             
@@ -37,29 +35,28 @@ switch ($_GET['prod']) {
                     $imgs[] = $newname;
                 }
                 $img = serialize($imgs);
-                $sql = "UPDATE Picker_prod SET MainPic='" . $img . "' WHERE Id=" . $returnid;
+                $sql = "UPDATE picker_prod SET MainPic='" . $img . "' WHERE Id=" . $returnid;
                 $db->query($sql);
             }
             plo('../pages/prod.php');
         } else {
-            return false;
             plo('../pages/prodadd.php');
         }
         break;
     case 'list':
-        $sql = "SELECT Id,Name,CateId,Price,NPrice,PkPrice,isMainSale FROM Picker_prod";
+        $sql = "SELECT Id,Name,CateId,Price,NPrice,PkPrice,isMainSale FROM picker_prod";
         $rows = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         $list = json_encode($rows);
         echo $list;
         break;
     case 'cataprod':
-        $sql = "SELECT Id,Name,CateId,Price,NPrice,PkPrice,isMainSale FROM Picker_prod WHERE CateId=" . $_GET['id'];
+        $sql = "SELECT Id,Name,CateId,Price,NPrice,PkPrice,isMainSale FROM picker_prod WHERE CateId=" . $_GET['id'];
         $rows = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         $list = json_encode($rows);
         echo $list;
         break;
     case 'unhome';
-        $sql = "SELECT Id,Name,CateId,Price,NPrice,PkPrice,isMainSale FROM Picker_prod WHERE CateId=0";
+        $sql = "SELECT Id,Name,CateId,Price,NPrice,PkPrice,isMainSale FROM picker_prod WHERE CateId=0";
         $rows = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         $list = json_encode($rows);
         echo $list;

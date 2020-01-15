@@ -3,18 +3,13 @@
   <a href="admin.php" class="brand-link">
     <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">PICKER</span>
+
   </a>
+
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="" class="img-circle elevation-2" alt="">
-      </div>
-      <div class="info">
-        Hi,
-      </div>
-    </div>
+
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -97,6 +92,14 @@
         </li>
       </ul>
     </nav>
+    <a href="../api/all.api.php?do=adminlogut" class="brand-link">
+      <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span>登出</span>
+
+    </a>
+
+
+
     <!-- /.sidebar-menu -->
   </div>
   <!-- /.sidebar -->

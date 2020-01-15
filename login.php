@@ -14,8 +14,8 @@ if(isset($_SESSION['user'])) plo('index.php');
   <meta name="author" content="Ecommerce" />
   <title>Picker批客</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.png" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/littlelogo.ico">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />

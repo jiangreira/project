@@ -1,7 +1,7 @@
 <?php
 session_start();
 $db=new PDO("mysql:host=127.0.0.1;dbname=s1080407;charset=utf8","root","");
-// $db=new PDO("mysql:host=127.0.0.1;dbname=s1080407;charset=utf8","s1080407","s1080407");
+// $db=new PDO("mysql:host=localhost;dbname=s1080407;charset=utf8","s1080407","s1080407");
 date_default_timezone_set('Asia/Taipei');
 $time=",Credate,Upddate";
 $time_content=",NOW(),NOW()";

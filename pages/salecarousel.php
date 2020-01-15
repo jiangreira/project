@@ -1,10 +1,15 @@
+<?php
+require_once('../api/library.php');
+if (!isset($_SESSION['admin'])) plo('login.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>首頁設定</title>
+  <title>PICKER 管理後台</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- bootstrap -->
@@ -27,8 +32,8 @@
 
   <div class="wrapper">
 
-<!-- Navbar -->
-<?php include_once('admin_navbar.php') ?>
+    <!-- Navbar -->
+    <?php include_once('admin_navbar.php') ?>
     <!-- end-Navbar -->
     <!-- 左側slider -->
     <?php include_once('admin_slidebar.php') ?>
@@ -47,7 +52,7 @@
             <!-- 麵包屑 -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="admin.php">首頁</a></li>
                 <li class="breadcrumb-item active">首頁設定</li>
                 <li class="breadcrumb-item active">輪播圖管理</li>
               </ol>
@@ -122,8 +127,8 @@
   </div>
   <!-- ./wrapper -->
 
-   <!-- Jquery -->
-   <script src="../plugsin/jquery/jquery-3.4.1.min.js"></script>
+  <!-- Jquery -->
+  <script src="../plugsin/jquery/jquery-3.4.1.min.js"></script>
   <!-- bootstrap -->
   <script src="../plugsin/bootstrap/popper.min.js"></script>
   <script src="../plugsin/bootstrap/bootstrap.js"></script>

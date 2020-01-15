@@ -1,10 +1,16 @@
+<?php
+require_once('../api/library.php');
+if (!isset($_SESSION['admin'])) plo('login.php');
+?>
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Picker後台管理</title>
+  <title>PICKER 管理後台</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- bootstrap -->
@@ -44,17 +50,15 @@
             <!-- 麵包屑 -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="admin.php">首頁</a></li>
                 <li class="breadcrumb-item active">商品管理</li>
                 <li class="breadcrumb-item active">分類設定</li>
               </ol>
             </div>
           </div>
-          <!-- /.row -->
         </div>
-        <!-- /.container-fluid -->
+        <hr />
       </div>
-      <!-- /.content-header -->
 
       <!-- Main content -->
       <section class="content">
@@ -203,6 +207,7 @@
 
   <!-- Jquery -->
   <script src="../plugsin/jquery/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <!-- bootstrap -->
   <script src="../plugsin/bootstrap/popper.min.js"></script>
   <script src="../plugsin/bootstrap/bootstrap.js"></script>

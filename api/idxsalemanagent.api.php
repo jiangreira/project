@@ -36,10 +36,10 @@ switch ($_GET['managent']) {
                     $sql2 = '2';
                 }
                 $db->query($sql);
-                plo('salecarousel.php');
+                plo('../pages/salecarousel.php');
             }
         } else {
-            echo "<script>alert('請再確認圖片是否有上傳')," . jlo('salecarousel.php') . "</script>";
+            echo "<script>alert('請再確認圖片是否有上傳')," . jlo('../pages/salecarousel.php') . "</script>";
         }
         break;
     case 'carouselisshow':
