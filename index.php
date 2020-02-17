@@ -22,8 +22,7 @@ require_once('api/library.php');
   <link rel="stylesheet" href="assets/fonts/font-awesome.min.css" type="text/css">
   <!-- Line Icons CSS -->
   <link rel="stylesheet" href="assets/fonts/line-icons/line-icons.css" type="text/css">
-  <!-- Main Styles -->
-  <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+  
 
   <!-- Animate CSS -->
   <link rel="stylesheet" href="assets/extras/animate.css" type="text/css">
@@ -44,6 +43,8 @@ require_once('api/library.php');
   <link rel="stylesheet" href="assets/css/slicknav.css" type="text/css">
   <!-- Responsive CSS Styles -->
   <link rel="stylesheet" href="assets/css/responsive.css" type="text/css">
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="assets/css/main.css" type="text/css">
 
 </head>
 
@@ -233,23 +234,25 @@ require_once('api/library.php');
               <h5 class="tb">規格</h5>
               <span>S</span>
             </div>
+
             <div class="product-color">
               <h5 class="tb">選擇尺寸</h5>
             </div>
-            <div class="product-qty">
-              <span class="active" onclick="chgqty(this,'sub')">-</span>
-              <span calss="number">1</span>
-              <span class="active" onclick="chgqty(this,'add')">+</span>
+             <div class="product-quantity" id="quantity">
+              <button type="button" id="sub" class="sub">-</button>
+              <input type="text" name="prodqty" value="1" >
+              <button type="button" id="add" class="add">+</button>
             </div>
             <!-- Quantity Cart -->
             <div class="quantity-cart">
               <button type="button" class="btn btn-common" onclick="addcart(this)"><i class="icon-basket"></i>加入購物車</button>
             </div>
+           
+
+
           </div>
         </div>
         <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
     </div>
@@ -331,7 +334,7 @@ require_once('api/library.php');
       $('#new-products').find('.owl-prev').html('<i class="fa fa-angle-left"></i>');
       $('#new-products').find('.owl-next').html('<i class="fa fa-angle-right"></i>');
     })
-    
+
     $.get('api/idx.api.php?idx=mainprod', function(re) {
       mainlist = JSON.parse(re);
       let print = "";
@@ -453,6 +456,7 @@ require_once('api/library.php');
           print += `<span>${quickview.Spec.size[i]}</span>`;
         }
         $('#quickprod').find('.product-color').html(`<h5 class="tb">選擇尺寸</h5>${print}`);
+        $('input[name=prodqty]').val(1)
         $('#quickprod').modal();
 
 
@@ -463,6 +467,7 @@ require_once('api/library.php');
           $(this).parent('div').find("span").removeClass("active");
           $(this).addClass("active");
         });
+        
       })
     }
     let test
@@ -470,7 +475,7 @@ require_once('api/library.php');
     function addcart(e) {
       let name = $(e).parents().find('.info-panel h3').text();
       let prodid = $(e).parents('#quickprod').find('input[name=prodid]').val()
-      let qty = $(e).parents().find('div .product-qty span').eq(1).text()
+      let qty = $(e).parents().find('input[name=prodqty]').val()
       let spec = $(e).parents().find('div .product-size span').text()
       let size = $(e).parents().find('div .product-color .active').text()
       let price = $(e).parent().siblings('.price-ratting2').children().find('.realprice').text();
@@ -486,25 +491,17 @@ require_once('api/library.php');
         $('#quickprod').modal('hide');
       })
     }
-
-    function chgqty(who, what) {
-      switch (what) {
-        case 'add':
-          var $values = $(who).parent().children().eq(1).text();
-          $values = $values - 0 + 1;
-          $(who).parent().children().eq(1).text($values);
-          break;
-        case 'sub':
-          var $values = $(who).parent().children().eq(1).text();
-          if ($values == 1) {
-            $value = 1;
-          } else {
-            $values = $values - 1;
-          }
-          $(who).parent().children().eq(1).text($values);
-          break;
+    /*product quantity========================================================*/
+    $('.add').click(function() {
+      if ($(this).prev().val()) {
+        $(this).prev().val(+$(this).prev().val() + 1);
       }
-    }
+    });
+    $('.sub').click(function() {
+      if ($(this).next().val() > 1) {
+        if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
+      }
+    });
   </script>
 
 </body>

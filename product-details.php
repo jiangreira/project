@@ -154,10 +154,10 @@ foreach ($rows as $row) {
               }
               ?>
             </div>
-            <div class="product-qty">
-              <span class="active" onclick="chgqty(this,'sub')">-</span>
-              <span calss="number">1</span>
-              <span class="active" onclick="chgqty(this,'add')">+</span>
+            <div class="product-quantity" id="quantity">
+              <button type="button" id="sub" class="sub">-</button>
+              <input type="text" name="prodqty" value="1" >
+              <button type="button" id="add" class="add">+</button>
             </div>
             <!-- Quantity Cart -->
             <div class="quantity-cart">
@@ -229,7 +229,7 @@ foreach ($rows as $row) {
     function addcart(e) {
       let name = $(e).parents().find('.info-panel h1').text();
       let prodid = $(e).parents().find('.info-panel input[name=id]').val();
-      let qty = $(e).parents().find('div .product-qty span').eq(1).text()
+      let qty = $(e).parents().find('input[name=prodqty]').val();
       let spec = $(e).parents().find('div .product-size span').text()
       let size = $(e).parents().find('div .product-color .active').text()
       let price = $(e).parent().siblings('.price-ratting').children().find('.realprice').text();
@@ -242,25 +242,19 @@ foreach ($rows as $row) {
         price
       })
     }
-
-    function chgqty(who, what) {
-      switch (what) {
-        case 'add':
-          var $values = $(who).parent().children().eq(1).text();
-          $values = $values - 0 + 1;
-          $(who).parent().children().eq(1).text($values);
-          break;
-        case 'sub':
-          var $values = $(who).parent().children().eq(1).text();
-          if ($values == 1) {
-            $value = 1;
-          } else {
-            $values = $values - 1;
-          }
-          $(who).parent().children().eq(1).text($values);
-          break;
+     /*product quantity========================================================*/
+     $('.add').click(function() {
+      if ($(this).prev().val()) {
+        $(this).prev().val(+$(this).prev().val() + 1);
       }
-    }
+    });
+    $('.sub').click(function() {
+      if ($(this).next().val() > 1) {
+        if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
+      }
+    });
+
+  
   </script>
 </body>
 

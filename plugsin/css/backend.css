@@ -1,5 +1,7 @@
 /** @format */
-
+.smtitle{
+  margin:5px 0px
+}
 .titleh1 {
   font-family: "Noto Sans TC", sans-serif;
   margin: 0;

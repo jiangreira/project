@@ -33,6 +33,12 @@ switch($_GET['do']){
         unset($_SESSION['cart']);
         echo '<script>alert("訂單接收成功");'.jlo('../member.php').'</script>';        
     break;
+    case'mdyqty':
+        print_r($_GET);
+        print_r($_POST);
+        print_r($_SESSION);
+    break;
+        
 }
 
 ?>

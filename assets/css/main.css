@@ -2720,7 +2720,9 @@ button:hover {
 }
 .info-panel .product-size,
 .info-panel .product-color,
-.info-panel .product-qty {
+.info-panel .product-qty,
+.info-panel .product-quantity
+ {
   width: 100%;
   display: inline-block;
   margin-bottom: 25px;
@@ -2750,6 +2752,33 @@ button:hover {
   background: #d88810;
   color: #fff;
 }
+.product-quantity button {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  background-color: #fff;
+  font-size: 18px;
+  color: #333;
+  border: 1px solid #e0e0e0 }
+  
+@media (max-width: 767px) {
+.product-quantity button {
+    width: 40px;
+    height: 40px; } }
+.product-quantity input {
+    width: 60px;
+    height: 45px;
+    border: 1px solid #e0e0e0;
+    padding: 0 10px;
+    text-align: center;
+    margin: 0 2px; }
+@media (max-width: 767px) {
+.product-quantity input {
+    height: 40px; } }
+
+
+
+
 .info-panel .color-list {
   margin-bottom: 25px;
   display: inline-block;

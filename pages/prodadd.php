@@ -1,6 +1,6 @@
 <?php
 require_once('../api/library.php');
-if(!isset($_SESSION['admin'])) plo('login.php');
+if (!isset($_SESSION['admin'])) plo('login.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +27,9 @@ if(!isset($_SESSION['admin'])) plo('login.php');
   <!-- custom  -->
   <link rel="stylesheet" href="../plugsin/css/admin.css">
   <link rel="stylesheet" href="../plugsin/css/backend.css">
+  <!-- bootstrap inputfile -->
+  <link rel="stylesheet" href="../plugsin/bootstrap-fileinput/css/fileinput.css">
+
 
 
 
@@ -73,20 +76,23 @@ if(!isset($_SESSION['admin'])) plo('login.php');
           <form method="POST" action="../api/prod.api.php?prod=add" enctype="multipart/form-data" onkeydown="if(event.keyCode==13)return false">
             <button type="submit" class="btn btn-primary">新增</button>
             <hr>
+            <h4>商品基本資訊<em class="fas fa-sort-down ml-2"></em></h4>
+            <br>
+            <!-- 名稱 -->
             <div class="form-group">
-              <h4>商品基本資訊<em class="fas fa-sort-down ml-2"></em></h4>
-              <label for="prodname">商品名稱(20字)</label>
+              <p class="smtitle">商品名稱</p>
               <input type="text" class="form-control" name="prodname" />
             </div>
+            <!-- 分類 -->
             <div class="form-group">
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label>主分類</label>
+                  <p class="smtitle">主分類</p>
                   <select name="maincate" class="form-control dropmain" onchange='ischg()'>
                   </select>
                 </div>
                 <div class="form-group col-md-6">
-                  <label>次分類</label>
+                  <p class="smtitle">次分類</p>
                   <select name="subcate" class="form-control dropsub">
                   </select>
                 </div>
@@ -94,63 +100,58 @@ if(!isset($_SESSION['admin'])) plo('login.php');
 
 
             </div>
+            <!-- 售價資訊 -->
             <div class="form-group">
               <div class="form-row">
                 <div class="form-group col-md-3">
-                  <label>商品成本</label>
+                  <p class="smtitle">商品成本</p>
                   <input type="text" name="costprice" class="form-control">
                 </div>
                 <div class="form-group col-md-3">
-                  <label>商品售價</label>
+                  <p class="smtitle">商品售價</p>
                   <input type="text" name="price" class="form-control">
                 </div>
                 <div class="form-group col-md-3">
-                  <label>一般會員價</label>
+                  <p class="smtitle">一般會員價</p>
                   <input type="text" name="nprice" class="form-control">
                 </div>
                 <div class="form-group col-md-3">
-                  <label>會員價</label>
+                  <p class="smtitle">會員價</p>
                   <input type="text" name="pkprice" class="form-control">
                 </div>
               </div>
             </div>
+            <!-- 圖片 -->
+
+            <h4>商品圖片<em class="fas fa-sort-down ml-2"></em></h4>
+            <br>
             <div class="form-group">
-              <h4>商品圖片<em class="fas fa-sort-down ml-2"></em></h4>
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <div class="custom-file">
-                    <input type="file" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
-                    <label class="custom-file-label" for="formcarousel">選擇檔案</label>
-                  </div>
-                </div>
-                <div class="form-group col-md-4">
-                  <div class="custom-file">
-                    <input type="file" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
-                    <label class="custom-file-label" for="formcarousel">選擇檔案</label>
-                  </div>
-                </div>
-                <div class="form-group col-md-4">
-                  <div class="custom-file">
-                    <input type="file" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" class="custom-file-input" />
-                    <label class="custom-file-label" for="formcarousel">選擇檔案</label>
-                  </div>
-                </div>
+              <div class="file-loading">
+                <input id="prodpic" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" type="file" multiple   data-show-upload="false" data-show-caption="true">
               </div>
-              <hr />
             </div>
+            <label for="input-25">Planets and Satellites</label>
+            <div class="file-loading">
+              <input id="input-25" name="input25[]" type="file" multiple>
+            </div>
+
+
             <!-- 規格 -->
             <div class="form-group">
               <h4>商品規格<em class="fas fa-sort-down ml-2"></em></h4>
-              <div class=" mt-3 mb-3 col-4">
-              <span>規格</span>
-              <input type="text" name="specname" class="form-control mb-3" placeholder="無填寫則無規格">
+              <br>
+              <div class="form-group col-md-4">
+                <p class="smtitle">規格</p>
+                <input type="checkbox" class="" id="nospec">
+                <label class="form-check-label" for="nospec">無規格</label>
+                <input type="text" name="specname" class="form-control mb-3" placeholder="請填寫規格">
               </div>
-              
+
               <table class="table table-bordered" id="prodspec">
                 <thead>
                   <tr>
                     <th><em class="fa fa-cog"></em></th>
-                    <th>尺寸</th>
+                    <th><input type="text" name="whatspec" class="form-control" placeholder="註*"></th>
                     <th>型號</th>
                     <th>庫存</th>
                   </tr>
@@ -184,11 +185,12 @@ if(!isset($_SESSION['admin'])) plo('login.php');
                     <td><input type="text" name="prodspec[stock][]" class="form-control" /></td>
                   </tr>
                 </tbody>
+                <tfoot>註:請填寫詳細的尺寸或對應的顏色</tfoot>
               </table>
               <hr />
             </div>
             <!-- 簡短敘述 -->
-            <div class="form-group ">
+            <div class="form-group">
               <h4>簡短敘述<em class="fas fa-sort-down ml-2"></em></h4>
               <textarea class="form-control" rows="5" name="prodshortdesc"></textarea>
             </div>
@@ -215,21 +217,26 @@ if(!isset($_SESSION['admin'])) plo('login.php');
   <!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
 
-  <!-- bs-custom-file-input -->
-  <!-- <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> -->
+
 
   <!-- Jquery -->
   <script src="../plugsin/jquery/jquery-3.4.1.min.js"></script>
   <!-- bootstrap -->
   <script src="../plugsin/bootstrap/popper.min.js"></script>
   <script src="../plugsin/bootstrap/bootstrap.js"></script>
-   <!-- summernote editor -->
-   <script src="../plugsin/summernote/summernote-bs4.js"></script>
+  <!-- file-input -->
+ 
+  <script src="../plugsin/bootstrap-fileinput/js/plugins/piexif.js"></script>
+  <script src="../plugsin/bootstrap-fileinput/js/fileinput.js"></script>
+  <script src="../plugsin/bootstrap-fileinput/themes/gly/theme.js"></script>
+  
+  <!-- summernote editor -->
+  <script src="../plugsin/summernote/summernote-bs4.js"></script>
   <!-- fontawesome -->
   <script src="../plugsin/fonts/fontawesome/all.min.js"></script>
   <!-- custom js AdminLTE App -->
   <script src="../plugsin/js/admin.js"></script>
- 
+
 
 
 
@@ -294,6 +301,31 @@ if(!isset($_SESSION['admin'])) plo('login.php');
           .remove();
       }
     }
+  </script>
+  <script>
+    $(document).ready(function() {
+      $("#prodpic").fileinput({
+        previewFileType: "image",
+        browseClass: "btn btn-success",
+        browseLabel: "選擇圖片",
+        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "刪除",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+        uploadClass: "btn btn-info",
+        uploadLabel: "上傳",
+        uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> "
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $("#input-25").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 100,
+        initialCaption: "The Moon and the Earth"
+      });
+    });
   </script>
 </body>
 
