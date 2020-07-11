@@ -1,6 +1,6 @@
 <?php
 require_once('../api/library.php');
-if(!isset($_SESSION['admin'])) plo('login.php');
+if (!isset($_SESSION['admin'])) plo('login.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -116,8 +116,8 @@ if(!isset($_SESSION['admin'])) plo('login.php');
         print += `
             <tr>
                 <td>
-                  <a class="btn btn-info text-light" onclick=""><em class="fas fa-pen"></em></a>
-                  <a class="btn btn-danger text-light" onclick=""><em class="fa fa-trash"></em></a>
+                  <a class="btn btn-info text-light" onclick="mdy(${tablelist[i].Id})"><em class="fas fa-pen"></em></a>
+                  <a class="btn btn-danger text-light" onclick="del(${tablelist[i].Id})"><em class="fa fa-trash"></em></a>
                 </td>
                 <td>${tablelist[i].Id}</td>
                 <td>${tablelist[i].Name}</td>
@@ -131,7 +131,6 @@ if(!isset($_SESSION['admin'])) plo('login.php');
       $('tbody').html(print);
       $('#tprodlist').DataTable();
     })
-
 
     // 取得主分類的下拉選單
     $.get('../api/cata.api.php?cata=catamain', function(re) {
@@ -147,8 +146,9 @@ if(!isset($_SESSION['admin'])) plo('login.php');
         `;
       }
       $('.dropmain').append(print)
-      $('.dropsub').attr('disabled','disabled');//次分類disable
+      $('.dropsub').attr('disabled', 'disabled'); //次分類disable
     })
+
     // 當slect選擇主分類時顯示該分類底下的次分類
     function mainischg() {
       let id = $('.dropmain').val();
@@ -163,12 +163,12 @@ if(!isset($_SESSION['admin'])) plo('login.php');
               print += `
               <option value='${catasublist[i].Id}'>${catasublist[i].Name}</option>`;
 
-              $('.dropsub').removeAttr('disabled','');
+              $('.dropsub').removeAttr('disabled', '');
             }
             $('.dropsub').html(print);
           } else {
             $('.dropsub').html("<option value='ori'>無次分類</option>");
-            $('.dropsub').attr('disabled','disabled');//次分類disable
+            $('.dropsub').attr('disabled', 'disabled'); //次分類disable
           }
           $('#tprodlist').DataTable();
         })
@@ -180,8 +180,8 @@ if(!isset($_SESSION['admin'])) plo('login.php');
             print += `
             <tr>
                 <td>
-                  <a class="btn btn-info text-light" onclick=""><em class="fas fa-pencil-alt"></em></a>
-                  <a class="btn btn-danger text-light" onclick=""><em class="fa fa-trash"></em></a>
+                  <a class="btn btn-info text-light" onclick="mdy(${tablelist[i].Id})"><em class="fas fa-pen"></em></a>
+                  <a class="btn btn-danger text-light" onclick="del(${tablelist[i].Id})"><em class="fa fa-trash"></em></a>
                 </td>
                 <td>${tablelist[i].Id}</td>
                 <td>${tablelist[i].Name}</td>
@@ -192,28 +192,29 @@ if(!isset($_SESSION['admin'])) plo('login.php');
             </tr>
         `;
           }
-          $('.dropsub').attr('disabled','disabled');//次分類disable
+          $('.dropsub').attr('disabled', 'disabled'); //次分類disable
           $('.dropsub').html("<option value='ori'>-</option>");
           $('tbody').html(print);
           $('#tprodlist').DataTable();
         })
-      }        
+      }
     }
+
     //sleect 次分類變動時 要去查次分類的資料
-    function subischg () {
-        let id = $('.dropsub').val();
-        if (id != 'ori') {
-          $.get('../api/prod.api.php?prod=cataprod', {
-            id
-          }, function(re) {
-            tablelist = JSON.parse(re);
-            let print = "";
-            for (i = 0; i < tablelist.length; i++) {
-              print += `
+    function subischg() {
+      let id = $('.dropsub').val();
+      if (id != 'ori') {
+        $.get('../api/prod.api.php?prod=cataprod', {
+          id
+        }, function(re) {
+          tablelist = JSON.parse(re);
+          let print = "";
+          for (i = 0; i < tablelist.length; i++) {
+            print += `
             <tr>
                 <td>
-                  <a class="btn btn-info text-light" onclick=""><em class="fa fa-pencil"></em></a>
-                  <a class="btn btn-danger text-light" onclick=""><em class="fa fa-trash"></em></a>
+                  <a class="btn btn-info text-light" onclick="mdy(${tablelist[i].Id})"><em class="fas fa-pen"></em></a>
+                  <a class="btn btn-danger text-light" onclick="del(${tablelist[i].Id})"><em class="fa fa-trash"></em></a>
                 </td>
                 <td>${tablelist[i].Id}</td>
                 <td>${tablelist[i].Name}</td>
@@ -223,12 +224,25 @@ if(!isset($_SESSION['admin'])) plo('login.php');
                 <td>${(tablelist[i].isMainSale==0)?'否':'是'}</td>
             </tr>
         `;
-            }
-            $('tbody').html(print);
-            $('#tprodlist').DataTable();
-          })
-        }
-      }   
+          }
+          $('tbody').html(print);
+          $('#tprodlist').DataTable();
+        })
+      }
+    }
+
+    // 修改商品
+    function mdy(e) {
+      var prodid=e;
+      $.post('../api/prod.api.php?prod=mdy',{prodid},function(e){
+        console.log('hi')
+      })
+    }
+
+    // 刪除商品
+    function del(e) {
+      console.log(e)
+    }
   </script>
 </body>
 

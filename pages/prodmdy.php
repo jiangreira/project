@@ -54,14 +54,14 @@ if (!isset($_SESSION['admin'])) plo('login.php');
           <div class="row">
             <!-- title page -->
             <div class="col-sm-6">
-              <p class="titleh1">新增商品</p>
+              <p class="titleh1">修改商品</p>
             </div>
             <!-- 麵包屑 -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active">商品管理</li>
-                <li class="breadcrumb-item active">新增商品</li>
+                <li class="breadcrumb-item active">修改商品</li>
               </ol>
             </div>
           </div>
@@ -73,8 +73,8 @@ if (!isset($_SESSION['admin'])) plo('login.php');
       <section class="content ">
         <div class="container">
 
-          <form method="POST" action="../api/prod.api.php?prod=add" enctype="multipart/form-data" onkeydown="if(event.keyCode==13)return false">
-            <button type="submit" class="btn btn-primary">新增</button>
+          <form method="POST" action="../api/prod.api.php?prod=mdy" enctype="multipart/form-data" onkeydown="if(event.keyCode==13)return false">
+            <button type="submit" class="btn btn-primary">儲存</button>
             <hr>
             <h4>商品基本資訊<em class="fas fa-sort-down ml-2"></em></h4>
             <br>
@@ -127,10 +127,13 @@ if (!isset($_SESSION['admin'])) plo('login.php');
             <br>
             <div class="form-group">
               <div class="file-loading">
-                <input id="prodpic" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" type="file" multiple data-show-upload="false" data-show-caption="true">
+                <input id="prodpic" name="prodpic[]" accept="image/jpeg,image/jpg,image/gif,image/png" type="file" multiple   data-show-upload="false" data-show-caption="true">
               </div>
             </div>
-            <div id="fine-uploader-gallery"></div>
+            <label for="input-25">Planets and Satellites</label>
+            <div class="file-loading">
+              <input id="input-25" name="input25[]" type="file" multiple>
+            </div>
 
 
             <!-- 規格 -->
@@ -222,11 +225,11 @@ if (!isset($_SESSION['admin'])) plo('login.php');
   <script src="../plugsin/bootstrap/popper.min.js"></script>
   <script src="../plugsin/bootstrap/bootstrap.js"></script>
   <!-- file-input -->
-
+ 
   <script src="../plugsin/bootstrap-fileinput/js/plugins/piexif.js"></script>
   <script src="../plugsin/bootstrap-fileinput/js/fileinput.js"></script>
   <script src="../plugsin/bootstrap-fileinput/themes/gly/theme.js"></script>
-
+  
   <!-- summernote editor -->
   <script src="../plugsin/summernote/summernote-bs4.js"></script>
   <!-- fontawesome -->
@@ -311,13 +314,19 @@ if (!isset($_SESSION['admin'])) plo('login.php');
         removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
         uploadClass: "btn btn-info",
         uploadLabel: "上傳",
-        uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> ",
-        deleteUrl: "/site/file-delete"
+        uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> "
       });
     });
-
   </script>
-
+  <script>
+    $(document).ready(function() {
+      $("#input-25").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 100,
+        initialCaption: "The Moon and the Earth"
+      });
+    });
+  </script>
 </body>
 
 </html>

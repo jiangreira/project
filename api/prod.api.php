@@ -14,23 +14,23 @@ switch ($_GET['prod']) {
             $PkPrice = $_POST['pkprice'];
             $ProdDesc = $_POST['proddesc'];
             $ShortDesc = $_POST['prodshortdesc'];
-            $SpecName=(empty($_POST['specname']))?'無規格':$_POST['specname'];
+            $SpecName = (empty($_POST['specname'])) ? '無規格' : $_POST['specname'];
             // 壓縮--
             $unprodspec = ($_POST['prodspec']);
             $prodspec = serialize($unprodspec);
             // 記得壓縮---
 
             $sql = "INSERT INTO picker_prod (Id,Name,CateId,CostPrice,Price,NPrice,PkPrice,SpecName,ShortDesc,Spec,ProdDesc,Credate,Upddate) 
-            VALUES (null,'" . $Name . "'," . $CateId . "," . $CostPrice . "," . $Price . "," . $NPrice . "," . $PkPrice . ",'" .$SpecName."','". $ShortDesc . "','" . $prodspec . "','" . $ProdDesc . "',NOW(),NOW())";
+            VALUES (null,'" . $Name . "'," . $CateId . "," . $CostPrice . "," . $Price . "," . $NPrice . "," . $PkPrice . ",'" . $SpecName . "','" . $ShortDesc . "','" . $prodspec . "','" . $ProdDesc . "',NOW(),NOW())";
             $db->query($sql);
             $returnid = $db->lastInsertId();
-            
+
             // 如果有圖片的話再進入這裡
             if (count($_FILES['prodpic']['name'])) {
                 $counts = count($_FILES['prodpic']['name']);
                 $imgs = array();
                 for ($i = 0; $i < $counts; $i++) {
-                    $newname = time() . "_" . $_FILES['prodpic']['name'][$i];
+                    $newname = time() . "_" . $returnid.[$i];
                     copy($_FILES['prodpic']['tmp_name'][$i], "../upload/prod/" . $newname);
                     $imgs[] = $newname;
                 }
@@ -60,5 +60,15 @@ switch ($_GET['prod']) {
         $rows = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         $list = json_encode($rows);
         echo $list;
+        break;
+
+
+
+    case 'mdy':
+        $sql='SELECT * FROM picker_prod WHERE id='.$_POST['prodid'].' AND isDelete=0';
+        $rows=$db->query($sql)->fetch(PDO::FETCH_ASSOC);
+        $rows['Spec']=unserialize($rows['Spec']);
+        $rows['MainPic']=unserialize($rows['MainPic']);
+        print_r($rows);
         break;
 }
